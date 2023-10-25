@@ -35,10 +35,8 @@ class Natural:
             return False
         for i in range(len(self)):
             if self.data[i] != other.data[i]:
-                break
-        else:
-            return True
-        return False
+                return False
+        return True
 
     def __le__(self, other: Natural) -> bool:
         return (self < other) or (self == other)
