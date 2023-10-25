@@ -1,7 +1,6 @@
 from __future__ import annotations
 from typing import Literal
 
-
 Digit = Literal[1, 2, 3, 4, 5, 6, 7, 8, 9, 0]
 
 
@@ -66,3 +65,6 @@ class Natural:
 
     def is_not_zero(self) -> bool:
         return not (len(self) == 1 and self.data[0] == 0)
+
+    def __str__(self):
+        return "".join(str(digit) for digit in self.data[::-1])
