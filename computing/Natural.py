@@ -50,14 +50,14 @@ class Natural:
     def __ge__(self, other: Natural) -> bool:
         return not (self < other)
 
-    def comparator(self, other: Natural) -> int:
+    def comparator(self, other: Natural) -> Literal[-1, 0, 1]:
         if self < other:
             return -1
         if self > other:
             return 1
         return 0
 
-    def compare(self, other: Natural) -> int:
+    def compare(self, other: Natural) -> Literal[0, 1, 2]:
         if self > other:
             return 2
         if self < other:
