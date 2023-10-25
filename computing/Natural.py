@@ -29,6 +29,8 @@ class Natural:
         return self.data[i] < other.data[i]
 
     def __eq__(self, other: Natural) -> bool:
+        if self is other:
+            return True
         if len(self) != len(other):
             return False
         for i in range(len(self)):
