@@ -13,7 +13,7 @@ class Natural:
         self.data = []
         for digit in value:
             self.data = [int(digit)] + self.data
-
+    
     def __len__(self):
         return len(self.data)
 
@@ -53,6 +53,14 @@ class Natural:
 
     def __ge__(self, other: Natural) -> bool:
         return not (self < other)
+    
+    def __mod__(self, other: Natural) -> Natural:
+        # return Natural(str(int(self)%int(other)))
+        # РАСКОММЕНТИТЬ ЕСЛИ ПОНАДОБИТСЯ А НИЖЕ НЕ НАПИСАН КОД
+        pass
+
+    def copy(self):
+        return Natural(str(self))
 
     def comparator(self, other: Natural) -> Literal[-1, 0, 1]:
         if self < other:
@@ -116,14 +124,14 @@ class Natural:
         pass
 
     def mod(self, other: Natural) -> Natural:
-        # return Natural(str(int(self)%int(other)))
-        # РАСКОММЕНТИТЬ ЕСЛИ ПОНАДОБИТСЯ А НИЖЕ НЕ НАПИСАН КОД
-        pass
+        return self % other
 
     def gcd(self, other: Natural) -> Natural:
+        from gcd import gcd
+        return gcd(self, other)
         # return Natural(str(math.gcd(int(self), int(other))))
         # РАСКОММЕНТИТЬ ЕСЛИ ПОНАДОБИТСЯ А НИЖЕ НЕ НАПИСАН КОД
-        pass
+        # pass
 
     def lcm(self, other: Natural) -> Natural:
         # return Natural(str(math.lcm(int(self), int(other))))
