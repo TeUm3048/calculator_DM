@@ -5,4 +5,4 @@ from .Natural import Natural
 
 
 def lcm(num1: Natural, num2: Natural) -> Natural:
-    return num1 * num2 // (num1 % num2)
+    return (num1.multiply(num2)).div((num1.mod(num2)))

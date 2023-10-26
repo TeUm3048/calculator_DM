@@ -53,9 +53,9 @@ class Natural:
 
     def __ge__(self, other: Natural) -> bool:
         return not (self < other)
-    
+
     def __mod__(self, other: Natural) -> Natural:
-        # return Natural(str(int(self)%int(other)))
+        return Natural(str(int(self)%int(other)))
         # РАСКОММЕНТИТЬ ЕСЛИ ПОНАДОБИТСЯ А НИЖЕ НЕ НАПИСАН КОД
         pass
 
@@ -80,12 +80,12 @@ class Natural:
         return not (len(self) == 1 and self.data[0] == 0)
 
     def increment(self) -> None:
-        # self.data = Natural(str(int(self)+1)).data
+        self.data = Natural(str(int(self)+1)).data
         # РАСКОММЕНТИТЬ ЕСЛИ ПОНАДОБИТСЯ А НИЖЕ НЕ НАПИСАН КОД
         pass
 
     def add(self, other: Natural) -> Natural:
-        # return Natural(str(int(self)+int(other)))
+        return Natural(str(int(self)+int(other)))
         # РАСКОММЕНТИТЬ ЕСЛИ ПОНАДОБИТСЯ А НИЖЕ НЕ НАПИСАН КОД
         pass
 
@@ -98,12 +98,12 @@ class Natural:
         pass
 
     def multiply_by_digit(self, other: int) -> Natural:
-        # return Natural(str(int(self)*other))
+        return Natural(str(int(self)*other))
         # РАСКОММЕНТИТЬ ЕСЛИ ПОНАДОБИТСЯ А НИЖЕ НЕ НАПИСАН КОД
         pass
 
     def multiply_by_power_of_10(self, k: int) -> Natural:
-        # return Natural(str(int(self)*(10**k)))
+        return Natural(str(int(self)*(10**k)))
         # РАСКОММЕНТИТЬ ЕСЛИ ПОНАДОБИТСЯ А НИЖЕ НЕ НАПИСАН КОД
         pass
 
@@ -113,7 +113,7 @@ class Natural:
         pass
 
     def subtract_product_from_natural(self, other: Natural, k: int) -> Natural:
-        # return Natural(str(int(self)- k * int(other)))
+        return Natural(str(int(self) - k * int(other)))
         # РАСКОММЕНТИТЬ ЕСЛИ ПОНАДОБИТСЯ А НИЖЕ НЕ НАПИСАН КОД
         pass
 
@@ -121,7 +121,7 @@ class Natural:
     # я сам не понял че надо так шо надо будет подумать
 
     def div(self, other: Natural) -> Natural:
-        # return Natural(str(int(self)//int(other)))
+        return Natural(str(int(self)//int(other)))
         # РАСКОММЕНТИТЬ ЕСЛИ ПОНАДОБИТСЯ А НИЖЕ НЕ НАПИСАН КОД
         pass
 
@@ -136,7 +136,8 @@ class Natural:
         # pass
 
     def lcm(self, other: Natural) -> Natural:
-        # return Natural(str(math.lcm(int(self), int(other))))
+        from .lcm import lcm
+        return lcm(self, other)
         # РАСКОММЕНТИТЬ ЕСЛИ ПОНАДОБИТСЯ А НИЖЕ НЕ НАПИСАН КОД
         pass
 
