@@ -90,6 +90,8 @@ class Natural:
         pass
 
     def subtract(self, other: Natural) -> Natural:
+        from .subtract import subtract
+        return subtract(self, other)
         # return Natural(str(int(self)-int(other)))
         # РАСКОММЕНТИТЬ ЕСЛИ ПОНАДОБИТСЯ А НИЖЕ НЕ НАПИСАН КОД
         # НЕ ВЫЧИТАТЬ ИЗ МЕНЬШЕГО БОЛЬШЕЕ
@@ -127,7 +129,7 @@ class Natural:
         return self % other
 
     def gcd(self, other: Natural) -> Natural:
-        from gcd import gcd
+        from .gcd import gcd
         return gcd(self, other)
         # return Natural(str(math.gcd(int(self), int(other))))
         # РАСКОММЕНТИТЬ ЕСЛИ ПОНАДОБИТСЯ А НИЖЕ НЕ НАПИСАН КОД
