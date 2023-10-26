@@ -89,6 +89,9 @@ class Natural:
         # РАСКОММЕНТИТЬ ЕСЛИ ПОНАДОБИТСЯ А НИЖЕ НЕ НАПИСАН КОД
         pass
 
+    def __sub__(self, other):
+        return self.subtract(other)
+
     def subtract(self, other: Natural) -> Natural:
         from .subtract import subtract
         return subtract(self, other)
