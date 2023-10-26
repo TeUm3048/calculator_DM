@@ -1,7 +1,10 @@
 # Модуль: GCF_NN_N
-# Автор: Ильясов Марк 2381
+# Автор: Ильясов_Марк_2381
 
 from .Natural import Natural
+from mod import mod
+from compare import compare
+from subtract_product_from_natural import subtract_product_from_natural
 
 
 def gcd(num1: Natural, num2: Natural) -> Natural:
