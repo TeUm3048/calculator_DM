@@ -137,5 +137,6 @@ class Natural:
         # return Natural(str(math.lcm(int(self), int(other))))
         # РАСКОММЕНТИТЬ ЕСЛИ ПОНАДОБИТСЯ А НИЖЕ НЕ НАПИСАН КОД
         pass
+
     def __str__(self):
         return "".join(str(digit) for digit in self.data[::-1])
