@@ -20,6 +20,9 @@ class Natural:
     def __int__(self):
         return int(''.join(list(map(str, self.data)))[::-1])
 
+    def __str__(self):
+        return "".join(str(digit) for digit in self.data[::-1])
+
     def __lt__(self, other: Natural) -> bool:
         if len(self) > len(other):
             return False
@@ -129,5 +132,3 @@ class Natural:
         # return Natural(str(math.lcm(int(self), int(other))))
         # РАСКОММЕНТИТЬ ЕСЛИ ПОНАДОБИТСЯ А НИЖЕ НЕ НАПИСАН КОД
         pass
-    def __str__(self):
-        return "".join(str(digit) for digit in self.data[::-1])
