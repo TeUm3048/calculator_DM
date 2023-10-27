@@ -53,9 +53,9 @@ class Natural:
 
     def __ge__(self, other: Natural) -> bool:
         return not (self < other)
-    
+
     def __mod__(self, other: Natural) -> Natural:
-        # return Natural(str(int(self)%int(other)))
+        return Natural(str(int(self)%int(other)))
         # РАСКОММЕНТИТЬ ЕСЛИ ПОНАДОБИТСЯ А НИЖЕ НЕ НАПИСАН КОД
         pass
 
@@ -80,38 +80,44 @@ class Natural:
         return not (len(self) == 1 and self.data[0] == 0)
 
     def increment(self) -> None:
-        # self.data = Natural(str(int(self)+1)).data
+        self.data = Natural(str(int(self)+1)).data
         # РАСКОММЕНТИТЬ ЕСЛИ ПОНАДОБИТСЯ А НИЖЕ НЕ НАПИСАН КОД
         pass
 
     def add(self, other: Natural) -> Natural:
-        # return Natural(str(int(self)+int(other)))
+        return Natural(str(int(self)+int(other)))
         # РАСКОММЕНТИТЬ ЕСЛИ ПОНАДОБИТСЯ А НИЖЕ НЕ НАПИСАН КОД
-        pass
+        #pass
+
+    def __sub__(self, other):
+        return self.subtract(other)
 
     def subtract(self, other: Natural) -> Natural:
+        from .subtract import subtract
+        return subtract(self, other)
         # return Natural(str(int(self)-int(other)))
         # РАСКОММЕНТИТЬ ЕСЛИ ПОНАДОБИТСЯ А НИЖЕ НЕ НАПИСАН КОД
         # НЕ ВЫЧИТАТЬ ИЗ МЕНЬШЕГО БОЛЬШЕЕ
-        pass
+        #spass
 
     def multiply_by_digit(self, other: int) -> Natural:
-        # return Natural(str(int(self)*other))
+        return Natural(str(int(self)*other))
         # РАСКОММЕНТИТЬ ЕСЛИ ПОНАДОБИТСЯ А НИЖЕ НЕ НАПИСАН КОД
-        pass
+        #pass
 
-    def multiply_by_power_of_10(self, k: int) -> Natural:
-        # return Natural(str(int(self)*(10**k)))
+    def multiply_by_power_of_10(self, k: Natural) -> Natural:
+        return Natural(str(int(self)*(10**int(k)))) #заглушка написан для k : int
         # РАСКОММЕНТИТЬ ЕСЛИ ПОНАДОБИТСЯ А НИЖЕ НЕ НАПИСАН КОД
-        pass
+        #pass
 
     def multiply(self, other: Natural) -> Natural:
         # return Natural(str(int(self)*int(other)))
         # РАСКОММЕНТИТЬ ЕСЛИ ПОНАДОБИТСЯ А НИЖЕ НЕ НАПИСАН КОД
-        pass
+        from .multiply import multiply
+        return multiply(self, other)
 
     def subtract_product_from_natural(self, other: Natural, k: int) -> Natural:
-        # return Natural(str(int(self)- k * int(other)))
+        return Natural(str(int(self) - k * int(other)))
         # РАСКОММЕНТИТЬ ЕСЛИ ПОНАДОБИТСЯ А НИЖЕ НЕ НАПИСАН КОД
         pass
 
@@ -119,22 +125,24 @@ class Natural:
     # я сам не понял че надо так шо надо будет подумать
 
     def div(self, other: Natural) -> Natural:
-        # return Natural(str(int(self)//int(other)))
+        return Natural(str(int(self)//int(other)))
         # РАСКОММЕНТИТЬ ЕСЛИ ПОНАДОБИТСЯ А НИЖЕ НЕ НАПИСАН КОД
         pass
 
     def mod(self, other: Natural) -> Natural:
-        return self % other
+        from .mod import mod
+        return mod(self,other)
 
     def gcd(self, other: Natural) -> Natural:
-        from gcd import gcd
+        from .gcd import gcd
         return gcd(self, other)
         # return Natural(str(math.gcd(int(self), int(other))))
         # РАСКОММЕНТИТЬ ЕСЛИ ПОНАДОБИТСЯ А НИЖЕ НЕ НАПИСАН КОД
         # pass
 
     def lcm(self, other: Natural) -> Natural:
-        # return Natural(str(math.lcm(int(self), int(other))))
+        from .lcm import lcm
+        return lcm(self, other)
         # РАСКОММЕНТИТЬ ЕСЛИ ПОНАДОБИТСЯ А НИЖЕ НЕ НАПИСАН КОД
         pass
 
