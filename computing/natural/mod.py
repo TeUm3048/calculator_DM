@@ -7,6 +7,6 @@ from .Natural import Natural
 
 
 def mod(num1: Natural, num2: Natural) -> Natural:
-    if int(num2) == 0:
+    if not num2.is_not_zero():
         raise ZeroDivisionError
-    return num1.subtract_product_from_natural((num1.div(num2)), int(num2))
+    return num1.subtract(num1.div(num2).multiply(num2))
