@@ -7,5 +7,5 @@ from multiply_by_power_of_10 import multiply_by_power_of_10
 from add import add
 
 
-def multiple(num1: Natural, num2: Natural) -> Natural:
+def multiply(num1: Natural, num2: Natural) -> Natural:
     pass

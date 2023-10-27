@@ -105,8 +105,8 @@ class Natural:
         # РАСКОММЕНТИТЬ ЕСЛИ ПОНАДОБИТСЯ А НИЖЕ НЕ НАПИСАН КОД
         pass
 
-    def multiply_by_power_of_10(self, k: int) -> Natural:
-        return Natural(str(int(self)*(10**k)))
+    def multiply_by_power_of_10(self, k: Natural) -> Natural:
+        # return Natural(str(int(self)*(10**k))) #заглушка написан для k : int
         # РАСКОММЕНТИТЬ ЕСЛИ ПОНАДОБИТСЯ А НИЖЕ НЕ НАПИСАН КОД
         pass
 
