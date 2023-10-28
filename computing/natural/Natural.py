@@ -84,9 +84,10 @@ class Natural:
         pass
 
     def add(self, other: Natural) -> Natural:
-        return Natural(str(int(self) + int(other)))
+        # return Natural(str(int(self) + int(other)))
         # РАСКОММЕНТИТЬ ЕСЛИ ПОНАДОБИТСЯ А НИЖЕ НЕ НАПИСАН КОД
-        # pass
+        from .add import add
+        return add(self, other)
 
     def __sub__(self, other):
         return self.subtract(other)
