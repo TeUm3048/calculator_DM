@@ -20,7 +20,4 @@ def add (num1: Natural, num2: Natural) -> Natural:
             else:
                 increased.data.append(1)
 
-    while len(increased) > 1 and increased.data[-1] == 0:
-        increased.data.pop()
-
     return increased
