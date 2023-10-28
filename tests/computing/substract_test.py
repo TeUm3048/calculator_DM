@@ -63,7 +63,7 @@ def test_less_by_more():
     with pytest.raises(ValueError):
         correct_res = subtract_correct(a, b)
         res = a.subtract(b)
-    assert str(res) == str(correct_res)
+        assert str(res) == str(correct_res)
 
 
 def test_zero_by_zero():

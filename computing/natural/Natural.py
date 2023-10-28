@@ -87,7 +87,7 @@ class Natural:
     def add(self, other: Natural) -> Natural:
         return Natural(str(int(self)+int(other)))
         # РАСКОММЕНТИТЬ ЕСЛИ ПОНАДОБИТСЯ А НИЖЕ НЕ НАПИСАН КОД
-        pass
+        #pass
 
     def __sub__(self, other):
         return self.subtract(other)
@@ -98,22 +98,23 @@ class Natural:
         # return Natural(str(int(self)-int(other)))
         # РАСКОММЕНТИТЬ ЕСЛИ ПОНАДОБИТСЯ А НИЖЕ НЕ НАПИСАН КОД
         # НЕ ВЫЧИТАТЬ ИЗ МЕНЬШЕГО БОЛЬШЕЕ
-        pass
+        #spass
 
     def multiply_by_digit(self, other: int) -> Natural:
         return Natural(str(int(self)*other))
         # РАСКОММЕНТИТЬ ЕСЛИ ПОНАДОБИТСЯ А НИЖЕ НЕ НАПИСАН КОД
-        pass
+        #pass
 
     def multiply_by_power_of_10(self, k: Natural) -> Natural:
-        # return Natural(str(int(self)*(10**k))) #заглушка написан для k : int
+        return Natural(str(int(self)*(10**int(k)))) #заглушка написан для k : int
         # РАСКОММЕНТИТЬ ЕСЛИ ПОНАДОБИТСЯ А НИЖЕ НЕ НАПИСАН КОД
-        pass
+        #pass
 
     def multiply(self, other: Natural) -> Natural:
         # return Natural(str(int(self)*int(other)))
         # РАСКОММЕНТИТЬ ЕСЛИ ПОНАДОБИТСЯ А НИЖЕ НЕ НАПИСАН КОД
-        pass
+        from .multiply import multiply
+        return multiply(self, other)
 
     def subtract_product_from_natural(self, other: Natural, k: int) -> Natural:
         return Natural(str(int(self) - k * int(other)))
@@ -129,7 +130,8 @@ class Natural:
         pass
 
     def mod(self, other: Natural) -> Natural:
-        return self % other
+        from .mod import mod
+        return mod(self,other)
 
     def gcd(self, other: Natural) -> Natural:
         from .gcd import gcd
