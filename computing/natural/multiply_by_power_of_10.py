@@ -5,4 +5,12 @@ from .Natural import Natural
 
 
 def multiply_by_power_of_10(num: Natural, k: Natural) -> Natural:
-    pass
+    number = num.copy()
+    times = k.copy()
+    number.data.reverse()
+    while times.is_not_zero():
+        number.data.append(0)
+        times = times.subtract(Natural('1'))
+    number.data.reverse()
+
+    return number
