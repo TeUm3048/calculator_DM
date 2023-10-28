@@ -85,11 +85,13 @@ class Natural:
 
         # РАСКОММЕНТИТЬ ЕСЛИ ПОНАДОБИТСЯ А НИЖЕ НЕ НАПИСАН КОД
 
-
     def add(self, other: Natural) -> Natural:
         return Natural(str(int(self) + int(other)))
         # РАСКОММЕНТИТЬ ЕСЛИ ПОНАДОБИТСЯ А НИЖЕ НЕ НАПИСАН КОД
         # pass
+
+    def __add__(self, other: Natural):
+        return self.add(other)
 
     def __sub__(self, other):
         return self.subtract(other)
@@ -122,18 +124,32 @@ class Natural:
         from .multiply import multiply
         return multiply(self, other)
 
+    def __mul__(self, other: Natural | Digit) -> Natural:
+        if isinstance(other, Natural):
+            return self.multiply(other)
+        if other in Digit:
+            return self.multiply_by_digit(other)
+        raise ValueError("Argument must be equal Natural or Digit")
+
     def subtract_product_from_natural(self, other: Natural, k: int) -> Natural:
         return Natural(str(int(self) - k * int(other)))
         # РАСКОММЕНТИТЬ ЕСЛИ ПОНАДОБИТСЯ А НИЖЕ НЕ НАПИСАН КОД
         pass
 
-    # def get_digit_of_division_with_power(..):
-    # я сам не понял че надо так шо надо будет подумать
-
-    def div(self, other: Natural) -> Natural:
-        return Natural(str(int(self) // int(other)))
+    def get_digit_of_division_with_power(self, other: Natural) -> Natural:
+        # я сам не понял че надо так шо надо будет подумать
+        res = str(int(self) // int(other))
+        a000000 = res[0] + "0" * (len(res) - 1)
+        return Natural(a000000)
         # РАСКОММЕНТИТЬ ЕСЛИ ПОНАДОБИТСЯ А НИЖЕ НЕ НАПИСАН КОД
         pass
+
+    def div(self, other: Natural) -> Natural:
+        from .div import div
+        return div(self, other)
+
+    def __floordiv__(self, other: Natural):
+        return self.div(other)
 
     def mod(self, other: Natural) -> Natural:
         from .mod import mod
@@ -154,3 +170,6 @@ class Natural:
 
     def __str__(self):
         return "".join(str(digit) for digit in self.data[::-1])
+
+    def __repr__(self):
+        return f"Natural({self})"

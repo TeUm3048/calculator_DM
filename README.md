@@ -4,16 +4,20 @@
 
 [Дока наша](https://docs.google.com/document/d/1U6PXU9S1H9UYg6vOdKlbHRTDxDVNCQ8lelEw45oxRsc/edit?usp=sharing)
 
+[Отношения Рыжего и Ванькова](FrontBackRelation.md)
+
 В проекте используется python 3.10.12
 
 ## Как начать работу с репозиторием. Или не рабочий pytest
+
+На винде вместо `python3` возможно придётся писать `python` (я не знаю как вы установили свой питон) 
 
 1. Создайте виртуальное окружение
 
 Простая команда для этого
 
 ```bash
-python -m venv venv/calculator_DM
+python3 -m venv venv/calculator_DM
 ```
 
 Использовать окружение для этого терминала
@@ -26,19 +30,19 @@ source venv/calculator_DM/bin/activate
 2. Установите зависимости
 
 ```bash
-python -m pip install -r requirements.txt
+python3 -m pip install -r requirements.txt
 ```
 
 3. Запускайте тесты следующей командой
 
 ```bash
 # Запустить все тесты
-python -m pytest
+python3 -m pytest
 ```
 
 ```bash
 # Запустить конкретный тест
-python -m pytest tests/computing/Natural_test.py
+python3 -m pytest tests/computing/Natural_test.py
 ```
 Прим. 
 Чтобы `pytest` нашел ваши тесты, файлы должны иметь приписку `test` в начале или в конце:
