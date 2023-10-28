@@ -7,6 +7,8 @@ from .Natural import Digit
 
 def multiply_by_digit(num: Natural, digit: Digit) -> Natural:
     carry, result = 0, []
+    if digit == '0':
+        return Natural('0')
     for d in num.data:
         total = d * digit + carry
         result.append(total % 10)
