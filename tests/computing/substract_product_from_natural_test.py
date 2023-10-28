@@ -18,8 +18,8 @@ def test_default():
 
 
 def test_minus_result():
-    num1 = Natural(str(123123211221))
-    num2 = Natural(str(12312321))
+    num1 = Natural(str(12312321))
+    num2 = Natural(str(123123211221))
     k = 5
     with pytest.raises(ValueError):
         correct_res = substract_product_from_natural_correct(num1, num2, k)

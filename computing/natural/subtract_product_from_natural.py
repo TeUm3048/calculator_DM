@@ -3,10 +3,12 @@
 
 from .Natural import Natural
 from .Natural import Digit
-from subtract import subtract
-from multiply_by_digit import multiply_by_digit
-from compare import compare
+from .subtract import subtract
+from .multiply_by_digit import multiply_by_digit
+from .compare import compare
 
 
 def subtract_product_from_natural(num1: Natural, num2: Natural, k: Digit) -> Natural:
-    pass
+    subtrahend = multiply_by_digit(num2, k)
+    res = subtract(num1, subtrahend)
+    return res

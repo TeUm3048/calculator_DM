@@ -120,8 +120,10 @@ class Natural:
         return multiply(self, other)
 
     def subtract_product_from_natural(self, other: Natural, k: int) -> Natural:
-        return Natural(str(int(self) - k * int(other)))
+        # return Natural(str(int(self) - k * int(other)))
         # РАСКОММЕНТИТЬ ЕСЛИ ПОНАДОБИТСЯ А НИЖЕ НЕ НАПИСАН КОД
+        from .subtract_product_from_natural import subtract_product_from_natural
+        return subtract_product_from_natural(self, other, k)
         pass
 
     # def get_digit_of_division_with_power(..):
