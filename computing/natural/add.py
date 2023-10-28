@@ -2,7 +2,6 @@
 # Автор: Газукина_Дарья_2381
 
 from .Natural import Natural
-from .compare import compare
 
 def add (num1: Natural, num2: Natural) -> Natural:
     increased = num1.copy()
