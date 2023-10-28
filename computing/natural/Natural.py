@@ -85,7 +85,6 @@ class Natural:
 
         # РАСКОММЕНТИТЬ ЕСЛИ ПОНАДОБИТСЯ А НИЖЕ НЕ НАПИСАН КОД
 
-
     def add(self, other: Natural) -> Natural:
         return Natural(str(int(self) + int(other)))
         # РАСКОММЕНТИТЬ ЕСЛИ ПОНАДОБИТСЯ А НИЖЕ НЕ НАПИСАН КОД
@@ -143,11 +142,11 @@ class Natural:
         pass
 
     def div(self, other: Natural) -> Natural:
-        return self // other
-
-    def __floordiv__(self, other: Natural):
         from .div import div
         return div(self, other)
+
+    def __floordiv__(self, other: Natural):
+        return self.div(other)
 
     def mod(self, other: Natural) -> Natural:
         from .mod import mod

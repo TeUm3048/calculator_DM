@@ -14,10 +14,11 @@ def div(num1: Natural, num2: Natural) -> Natural:
 
     a = num1.copy()
     b = num2.copy()
+
     res = Natural("0")
 
     while a >= b:
-        digit_eK = a.get_digit_of_division_with_power(b)
-        a -= digit_eK * b
-        res += digit_eK
+        digit_with_zeros = a.get_digit_of_division_with_power(b)
+        a -= digit_with_zeros * b
+        res += digit_with_zeros
     return res
