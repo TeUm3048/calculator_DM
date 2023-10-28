@@ -2,17 +2,18 @@
 # Автор: Газукина_Дарья_2381
 
 from .Natural import Natural
-from compare import compare
+from .compare import compare
 
 def add (num1: Natural, num2: Natural) -> Natural:
     increased = num1.copy()
+    added = num2.copy()
     if num1.compare(num2) == 2:
-        increased.data += [0] * (len(num1) - len(num2))
+        added.data += [0] * (len(num1) - len(num2))
     else:
         increased.data += [0] * (len(num2) - len(num1))
 
     for i in range(len(increased)):
-        increased.data[i] += num2.data[i]
+        increased.data[i] += added.data[i]
         if increased.data[i] > 9:
             increased.data[i] -= 10
             if i + 1 < len(increased):

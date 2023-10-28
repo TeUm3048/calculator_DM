@@ -1,9 +1,11 @@
 # Автор: Ярослав_Ваньков_2382
 from computing.natural.Natural import Natural
+from computing.natural.add import add
 
 
 def add_correct(self: Natural, other: Natural) -> Natural:
-    return Natural(str(int(self)+int(other)))
+    # return Natural(str(int(self)+int(other)))
+    return add(self, other)
 
 
 def test_default():
