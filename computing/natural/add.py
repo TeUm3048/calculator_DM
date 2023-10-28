@@ -5,13 +5,7 @@ from .Natural import Natural
 # from compare import compare
 
 def add (num1: Natural, num2: Natural) -> Natural:
-    # if len(num1) < len(num2):
-    #     num1 += [0] * (len(num2) - len(num1))
-    # else:
-    #     num2 += [0] * (len(num1) - len(num2))
     increased = num1.copy()
-    # added = num2.copy()
-    # if compare(num1, num2) == 2:
     if num1.compare(num2) == 2:
         increased.data += [0] * (len(num1) - len(num2))
     else:
