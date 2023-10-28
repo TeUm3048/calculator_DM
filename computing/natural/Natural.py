@@ -2,7 +2,6 @@ from __future__ import annotations
 from typing import Literal
 import math
 
-
 Digit = Literal[1, 2, 3, 4, 5, 6, 7, 8, 9, 0]
 
 
@@ -13,7 +12,7 @@ class Natural:
         self.data = []
         for digit in value:
             self.data = [int(digit)] + self.data
-    
+
     def __len__(self):
         return len(self.data)
 
@@ -55,7 +54,7 @@ class Natural:
         return not (self < other)
 
     def __mod__(self, other: Natural) -> Natural:
-        return Natural(str(int(self)%int(other)))
+        return Natural(str(int(self) % int(other)))
         # РАСКОММЕНТИТЬ ЕСЛИ ПОНАДОБИТСЯ А НИЖЕ НЕ НАПИСАН КОД
         pass
 
@@ -80,14 +79,14 @@ class Natural:
         return not (len(self) == 1 and self.data[0] == 0)
 
     def increment(self) -> None:
-        self.data = Natural(str(int(self)+1)).data
+        self.data = Natural(str(int(self) + 1)).data
         # РАСКОММЕНТИТЬ ЕСЛИ ПОНАДОБИТСЯ А НИЖЕ НЕ НАПИСАН КОД
         pass
 
     def add(self, other: Natural) -> Natural:
-        return Natural(str(int(self)+int(other)))
+        return Natural(str(int(self) + int(other)))
         # РАСКОММЕНТИТЬ ЕСЛИ ПОНАДОБИТСЯ А НИЖЕ НЕ НАПИСАН КОД
-        #pass
+        # pass
 
     def __sub__(self, other):
         return self.subtract(other)
@@ -98,17 +97,18 @@ class Natural:
         # return Natural(str(int(self)-int(other)))
         # РАСКОММЕНТИТЬ ЕСЛИ ПОНАДОБИТСЯ А НИЖЕ НЕ НАПИСАН КОД
         # НЕ ВЫЧИТАТЬ ИЗ МЕНЬШЕГО БОЛЬШЕЕ
-        #spass
+        # pass
 
-    def multiply_by_digit(self, other: int) -> Natural:
-        return Natural(str(int(self)*other))
+    def multiply_by_digit(self, other: Natural) -> Natural:
+        # return Natural(str(int(self)*other))
         # РАСКОММЕНТИТЬ ЕСЛИ ПОНАДОБИТСЯ А НИЖЕ НЕ НАПИСАН КОД
-        #pass
+        from .multiply_by_digit import multiply_by_digit
+        return multiply_by_digit(self, other)
 
     def multiply_by_power_of_10(self, k: Natural) -> Natural:
-        return Natural(str(int(self)*(10**int(k)))) #заглушка написан для k : int
+        return Natural(str(int(self) * (10 ** int(k))))  # заглушка написан для k : int
         # РАСКОММЕНТИТЬ ЕСЛИ ПОНАДОБИТСЯ А НИЖЕ НЕ НАПИСАН КОД
-        #pass
+        # pass
 
     def multiply(self, other: Natural) -> Natural:
         # return Natural(str(int(self)*int(other)))
@@ -125,13 +125,13 @@ class Natural:
     # я сам не понял че надо так шо надо будет подумать
 
     def div(self, other: Natural) -> Natural:
-        return Natural(str(int(self)//int(other)))
+        return Natural(str(int(self) // int(other)))
         # РАСКОММЕНТИТЬ ЕСЛИ ПОНАДОБИТСЯ А НИЖЕ НЕ НАПИСАН КОД
         pass
 
     def mod(self, other: Natural) -> Natural:
         from .mod import mod
-        return mod(self,other)
+        return mod(self, other)
 
     def gcd(self, other: Natural) -> Natural:
         from .gcd import gcd
