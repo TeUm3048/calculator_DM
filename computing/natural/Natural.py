@@ -140,9 +140,11 @@ class Natural:
 
     def get_digit_of_division_with_power(self, other: Natural) -> Natural:
         # я сам не понял че надо так шо надо будет подумать
-        res = str(int(self) // int(other))
-        a000000 = res[0] + "0" * (len(res) - 1)
-        return Natural(a000000)
+        # res = str(int(self) // int(other))
+        # a000000 = res[0] + "0" * (len(res) - 1)
+        # return Natural(a000000)
+        from .get_digit_of_division_with_power import get_digit_of_division_with_power
+        return get_digit_of_division_with_power(self, other)
         # РАСКОММЕНТИТЬ ЕСЛИ ПОНАДОБИТСЯ А НИЖЕ НЕ НАПИСАН КОД
         pass
 
