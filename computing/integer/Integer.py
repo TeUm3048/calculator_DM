@@ -1,7 +1,7 @@
 from __future__ import annotations
 from typing import Literal
 
-from ..natural.Natural import Natural
+from computing.natural.Natural import Natural
 
 Sign = Literal[-1, 1, 0]
 
@@ -14,7 +14,7 @@ class Integer:
         if isinstance(value, Natural):
             self.number = value
             self.sign = 1
-            return  
+            return
         if value[0] == '0':
             self.number = Natural('0')
             self.sign = 0
@@ -72,3 +72,8 @@ class Integer:
 
     def multiply_by_negative_one(self) -> None:
         self.sign = self.sign * (-1)
+
+
+if __name__ == '__main__':
+    s = Integer("6")
+    print(s, "sdfs")
