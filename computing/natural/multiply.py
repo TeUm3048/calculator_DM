@@ -14,5 +14,4 @@ def multiply(num1: Natural, num2: Natural) -> Natural:
     for i in range(len(num2)):
         k = Natural(str(i))
         res = res.add(num1.multiply_by_digit(num2.data[i]).multiply_by_power_of_10(k))
-        # res = add(multiply_by_power_of_10(multiply_by_digit(num1, num2.data[i]), Natural(str(i))), res)
     return res
