@@ -73,6 +73,10 @@ class Integer:
             return 1
         return 0
 
+    @staticmethod
+    def from_natural(natural: Natural):
+        return Integer(natural)
+
     def multiply_by_negative_one(self) -> None:
         self.sign = self.sign * (-1)
 
@@ -92,6 +96,6 @@ class Integer:
 
 
 if __name__ == '__main__':
-    s = Integer("26")
-    k = Integer('321')
-    print(s.multiply(k))
+    s = Natural('26')
+    k = Integer.from_natural(s)
+    print(k.sign)
