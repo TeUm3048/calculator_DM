@@ -16,9 +16,9 @@ def test_default():
             assert str(res) == str(correct_res)
 
 
-def test_():
-    a = Integer("-99")
-    b = Integer("99")
+def test_m100_1():
+    a = Integer("-100")
+    b = Integer("1")
     correct_res = add_correct(a, b)
     res = a.add(b)
     assert str(res) == str(correct_res)
