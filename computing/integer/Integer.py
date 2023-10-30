@@ -80,6 +80,13 @@ class Integer:
         from .mod import mod
         return mod(self, other)
 
+    def __add__(self, other: Integer) -> Integer:
+        return self.add(other)
+
+    def add(self, other: Integer) -> Integer:
+        from .add import add
+        return add(self, other)
+
     def subtract(self, other: Integer) -> Integer:
         return Integer(str(int(self) - int(other)))
 
