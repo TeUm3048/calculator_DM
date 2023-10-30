@@ -66,7 +66,7 @@ class Integer:
     def absolute(self) -> Natural:
         return self.number
 
-    def deternitane_sign(self) -> Literal[0, 1, 2]:
+    def determinate_sign(self) -> Literal[0, 1, 2]:
         if self.sign == 1:
             return 2
         if self.sign == -1:
