@@ -1,8 +1,12 @@
-# Модуль: OLD_MODULE_NAME_FROM_FILE_COLLOCVIUM_DM
-# Автор: Иванов Иван 0000
+# Модуль: MOD_NN_N
+# Автор: Кузнецов_Илья_2381
 
 from .Natural import Natural
+# from div import div
+# from subtract_product_from_natural import subtract_product_from_natural
 
 
 def mod(num1: Natural, num2: Natural) -> Natural:
-    pass
+    if not num2.is_not_zero():
+        raise ZeroDivisionError
+    return num1.subtract(num1.div(num2).multiply(num2))
