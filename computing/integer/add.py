@@ -8,8 +8,6 @@ def add(self: Integer, other: Integer) -> Integer:
     num1 = self.copy()
     num2 = other.copy()
     if num1.determinate_sign() == num2.determinate_sign():
-        # if num1.determinate_sign() == 1:
-        #     res = Integer('-1')
         num1.number = num1.number.add(num2.number)
         return num1
     match num1.number.compare(num2.number):
