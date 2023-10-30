@@ -10,41 +10,45 @@
 
 ## Как начать работу с репозиторием. Или не рабочий pytest
 
-На винде вместо `python3` возможно придётся писать `python` (я не знаю как вы установили свой питон) 
+На винде вместо `python3` возможно придётся писать `python` (я не знаю как вы установили свой питон)
 
 1. Создайте виртуальное окружение
 
-Простая команда для этого
+   Простая команда для этого
 
-```bash
-python3 -m venv venv/calculator_DM
-```
+    ```bash
+    python3 -m venv venv/calculator_DM
+    ```
 
-Использовать окружение для этого терминала
-Пример команды для bash/zsh, для других терминалов или винды смотреть [тут](https://docs.python.org/3/library/venv.html#how-venvs-work)
+   Использовать окружение для этого терминала
+   Пример команды для bash/zsh, для других терминалов или винды
+   смотреть [тут](https://docs.python.org/3/library/venv.html#how-venvs-work)
 
-```bash
-source venv/calculator_DM/bin/activate
-```
+    ```bash
+    source venv/calculator_DM/bin/activate
+    ```
 
-2. Установите зависимости
+1. Установите зависимости
 
-```bash
-python3 -m pip install -r requirements.txt
-```
+   Помимо этого вы установите наш пакет computing (fix импортов)
+   ```bash
+   python3 -m pip install -r requirements.txt
+   python3 -m pip install .
+   ```
 
-3. Запускайте тесты следующей командой
+1. Запускайте тесты следующей командой
 
-```bash
-# Запустить все тесты
-python3 -m pytest
-```
+   ```bash
+   # Запустить все тесты
+   python3 -m pytest
+   ```
 
-```bash
-# Запустить конкретный тест
-python3 -m pytest tests/computing/Natural_test.py
-```
-Прим. 
+   ```bash
+   # Запустить конкретный тест
+   python3 -m pytest tests/computing/Natural_test.py
+   ```
+
+Прим.
 Чтобы `pytest` нашел ваши тесты, файлы должны иметь приписку `test` в начале или в конце:
 
 Валидные названия тестов: `test_rational.py`, `gcd_test.py`.
