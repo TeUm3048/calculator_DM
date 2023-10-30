@@ -31,6 +31,9 @@ class Integer:
     def __int__(self):
         return int(self.number) * self.sign
 
+    def copy(self):
+        return Integer(str(self))
+
     def __str__(self):
         return ('-' * (self.sign < 0)) + str(self.number)
 
@@ -63,7 +66,7 @@ class Integer:
     def absolute(self) -> Natural:
         return self.number
 
-    def deternitane_sign(self) -> Literal[0, 1, 2]:
+    def determinate_sign(self) -> Literal[0, 1, 2]:
         if self.sign == 1:
             return 2
         if self.sign == -1:
@@ -81,7 +84,8 @@ class Integer:
         return Integer(str(int(self) - int(other)))
 
     def multiply(self, other: Integer) -> Integer:
-        return Integer(str(int(self) * int(other)))
+        from .multiply import multiply
+        return multiply(self, other)
 
     def div(self, other: Integer) -> Integer:
         return Integer(str(int(self) // int(other)))
@@ -90,4 +94,4 @@ class Integer:
 if __name__ == '__main__':
     s = Integer("26")
     k = Integer('321')
-    print(s.mod(k))
+    print(s.multiply(k))
