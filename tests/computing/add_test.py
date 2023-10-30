@@ -19,3 +19,4 @@ def test_default():
 def test_zero():
     zero = Natural('0')
     assert str(add_correct(zero, zero)) == str(zero.add(zero))
+

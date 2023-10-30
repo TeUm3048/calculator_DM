@@ -77,15 +77,29 @@ class Integer:
     def from_natural(natural: Natural):
         return Integer(natural)
 
-    def multiply_by_negative_one(self) -> None:
-        self.sign = self.sign * (-1)
+    def multiply_by_negative_one(self) -> Integer:
+        num = self.copy()
+        num.sign = num.sign * (-1)
+        return num
 
     def mod(self, other: Integer) -> Integer:
         from .mod import mod
         return mod(self, other)
 
+    def __add__(self, other: Integer) -> Integer:
+        return self.add(other)
+
+    def __sub__(self, other: Integer) -> Integer:
+        return self.subtract(other)
+
+    def add(self, other: Integer) -> Integer:
+        from .add import add
+        return add(self, other)
+
     def subtract(self, other: Integer) -> Integer:
-        return Integer(str(int(self) - int(other)))
+        from .subtract import subtract
+        return subtract(self, other)
+
 
     def multiply(self, other: Integer) -> Integer:
         from .multiply import multiply

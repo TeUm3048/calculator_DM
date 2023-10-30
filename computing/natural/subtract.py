@@ -11,9 +11,11 @@ def subtract(self: Natural, other: Natural) -> Natural:
         raise ValueError
     for i in range(len(num2)):
         num1.data[i] = num1.data[i] - num2.data[i]
-        if num1.data[i] < 0:
-            num1.data[i] += 10
-            num1.data[i+1] -= 1
+        j = i
+        while num1.data[j] < 0:
+            num1.data[j] += 10
+            num1.data[j + 1] -= 1
+            j += 1
     while num1.data[-1] == 0 and len(num1) != 1:
         num1.data.pop()
     return num1

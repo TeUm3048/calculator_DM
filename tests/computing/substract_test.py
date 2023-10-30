@@ -9,6 +9,10 @@ def subtract_correct(num1: Natural, num2: Natural) -> Natural:
     return Natural(str(int(num1) - int(num2)))
 
 
+def test_100_1():
+    assert Natural("100").subtract(Natural('1')) == Natural("99")
+
+
 def test_default_1():
     a = Natural(str(31453))
     b = Natural(str(122))
