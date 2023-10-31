@@ -114,4 +114,3 @@ class Integer:
 if __name__ == '__main__':
     s = Natural('26')
     k = Integer.from_natural(s)
-    print(k.sign)
