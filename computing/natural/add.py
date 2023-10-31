@@ -4,15 +4,13 @@
 from .Natural import Natural
 
 def add (num1: Natural, num2: Natural) -> Natural:
-    increased = num1.copy()
-    added = num2.copy()
-    if num1.compare(num2) == 2:
-        added.data += [0] * (len(num1) - len(num2))
-    else:
-        increased.data += [0] * (len(num2) - len(num1))
+    increased = num1.copy() if (len(num1) > len(num2)) else num2.copy()
+    added = num2.copy() if (len(num1) > len(num2)) else num1.copy()
+    max_len = max(len(num1), len(num2))
 
-    for i in range(len(increased)):
-        increased.data[i] += added.data[i]
+    for i in range(max_len):
+        if i < len(added):
+            increased.data[i] += added.data[i]
         if increased.data[i] > 9:
             increased.data[i] -= 10
             if i + 1 < len(increased):
