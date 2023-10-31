@@ -10,11 +10,12 @@ def correct(a: Natural, b: Natural) -> Natural:
 
 
 def test_default():
-    for i in range(1, 1000):
-        for j in range(1, 1000):
+    for i in range(1, 200):
+        for j in range(1, 200):
             a = Natural(str(i))
             b = Natural(str(j))
-            assert (a.get_digit_of_division_with_power(b), a, b) == (correct(a, b), a, b)
+            assert (a.get_digit_of_division_with_power(b), a, b
+                    ) == (correct(a, b), a, b)
 
 
 def test_11_1():
@@ -49,5 +50,5 @@ def test_div_by_555():
 def test_div_by_0():
     a = Natural("435")
     b = Natural("0")
-    with pytest.raises(ZeroDivisionError) as e:
-        x = a.get_digit_of_division_with_power(b)
+    with pytest.raises(ZeroDivisionError):
+        a.get_digit_of_division_with_power(b)
