@@ -12,7 +12,7 @@ def get_digit_of_division_with_power(num1: Natural, num2: Natural) -> Digit:
     b = num2.copy()
     a.data = a.data[-len(b):]
     if a < b:
-        a.data = num1.data[-len(b)+1:]
+        a.data = num1.data[-len(b) - 1:]
     k = Natural(str(len(num1) - len(a)))
     count = Natural("0")
     while a >= b:
