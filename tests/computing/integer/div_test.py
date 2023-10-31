@@ -12,19 +12,26 @@ def test_12_6():
 def test_150_72():
     a = Integer("-150")
     b = Integer("72")
-    assert a.div(b) == Integer("-2")
+    assert a.div(b) == Integer("-3")
 
 
 def test_155_10():
     a = Integer("-155")
-    b = Integer("-10")
-    assert a.div(b) == Integer("15")
+    b = Integer("10")
+    assert a.div(b) == Integer("-16")
 
 
-def test_155_200():
-    a = Integer("155")
-    b = Integer("-200")
-    assert a.div(b) == Integer("0")
+def test_700_200():
+    a = Integer("-700")
+    b = Integer("200")
+    assert a.div(b) == Integer("-4")
+
+
+
+def test_10_5():
+    a = Integer("-10")
+    b = Integer("5")
+    assert a.div(b) == Integer("-2")
 
 
 
