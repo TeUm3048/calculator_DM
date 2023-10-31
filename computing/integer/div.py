@@ -1,7 +1,8 @@
 # Модуль: DIV_ZZ_Z
 # Автор: Мавликаев_Иван_2381
 
-from .Integer import Integer, Natural
+
+from .Integer import Integer
 
 
 def div(num1: Integer, num2: Integer) -> Integer:

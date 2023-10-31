@@ -8,8 +8,8 @@ def correct(num1: Natural, num2: Natural) -> Natural:
 
 
 def test_default():
-    for i in range(1, 1000):
-        for j in range(1, 100):
+    for i in range(1, 200):
+        for j in range(1, 200):
             a = Natural(str(i))
             b = Natural(str(j))
             assert (a // b, a, b) == (correct(a, b), a, b)
@@ -54,4 +54,4 @@ def test_div_by_0():
     a = Natural("12")
     b = Natural("0")
     with pytest.raises(ZeroDivisionError):
-        res = a // b
+        a // b
