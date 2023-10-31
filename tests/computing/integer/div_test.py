@@ -27,12 +27,22 @@ def test_700_200():
     assert a.div(b) == Integer("-4")
 
 
+def test_700__200():
+    a = Integer("700")
+    b = Integer("200")
+    assert a.div(b) == Integer("3")
+
+
+def test_100_200():
+    a = Integer("-100")
+    b = Integer("200")
+    assert a.div(b) == Integer("-1")
+
 
 def test_10_5():
     a = Integer("-10")
     b = Integer("5")
     assert a.div(b) == Integer("-2")
-
 
 
 def test_155_0():
