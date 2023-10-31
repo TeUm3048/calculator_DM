@@ -37,6 +37,9 @@ class Integer:
     def __str__(self):
         return ('-' * (self.sign < 0)) + str(self.number)
 
+    def __repr__(self):
+        return f"Integer({self})"
+
     def __lt__(self, other: Integer) -> bool:
         if self.sign < other.sign:
             return True
@@ -99,7 +102,6 @@ class Integer:
     def subtract(self, other: Integer) -> Integer:
         from .subtract import subtract
         return subtract(self, other)
-
 
     def multiply(self, other: Integer) -> Integer:
         from .multiply import multiply
