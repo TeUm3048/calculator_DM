@@ -1,14 +1,10 @@
 # Модуль: SUB_NDN_N
 # Автор: Потапова_Дарья_2381
 
-from .Natural import Natural
-from .Natural import Digit
-from .subtract import subtract
-from .multiply_by_digit import multiply_by_digit
-from .compare import compare
+from .Natural import Natural, Digit
 
 
 def subtract_product_from_natural(num1: Natural, num2: Natural, k: Digit) -> Natural:
-    subtrahend = multiply_by_digit(num2, k)
-    res = subtract(num1, subtrahend)
+    subtrahend = num2.multiply_by_digit(k)
+    res = num1.subtract(subtrahend)
     return res

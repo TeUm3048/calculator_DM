@@ -1,7 +1,7 @@
 from __future__ import annotations
 from typing import Literal
 
-from ..natural.Natural import Natural
+from computing.natural.Natural import Natural
 
 Sign = Literal[-1, 1, 0]
 
@@ -14,7 +14,7 @@ class Integer:
         if isinstance(value, Natural):
             self.number = value
             self.sign = 1
-            return  
+            return
         if value[0] == '0':
             self.number = Natural('0')
             self.sign = 0
@@ -31,8 +31,14 @@ class Integer:
     def __int__(self):
         return int(self.number) * self.sign
 
+    def copy(self):
+        return Integer(str(self))
+
     def __str__(self):
-        return str(self.sign)[:1] + str(self.number)
+        return ('-' * (self.sign < 0)) + str(self.number)
+
+    def __repr__(self):
+        return f"Integer({self})"
 
     def __lt__(self, other: Integer) -> bool:
         if self.sign < other.sign:
@@ -63,12 +69,50 @@ class Integer:
     def absolute(self) -> Natural:
         return self.number
 
-    def deternitane_sign(self) -> Literal[0, 1, 2]:
+    def determinate_sign(self) -> Literal[0, 1, 2]:
         if self.sign == 1:
             return 2
         if self.sign == -1:
             return 1
         return 0
 
-    def multiply_by_negative_one(self) -> None:
-        self.sign = self.sign * (-1)
+    @staticmethod
+    def from_natural(natural: Natural):
+        return Integer(natural)
+
+    def multiply_by_negative_one(self) -> Integer:
+        num = self.copy()
+        num.sign = num.sign * (-1)
+        return num
+
+    def mod(self, other: Integer) -> Integer:
+        from .mod import mod
+        return mod(self, other)
+
+    def __add__(self, other: Integer) -> Integer:
+        return self.add(other)
+
+    def __sub__(self, other: Integer) -> Integer:
+        return self.subtract(other)
+
+    def add(self, other: Integer) -> Integer:
+        from .add import add
+        return add(self, other)
+
+    def subtract(self, other: Integer) -> Integer:
+        from .subtract import subtract
+        return subtract(self, other)
+
+    def multiply(self, other: Integer) -> Integer:
+        from .multiply import multiply
+        return multiply(self, other)
+
+    def div(self, other: Integer) -> Integer:
+        from .div import div
+        return div(self, other)
+
+
+if __name__ == '__main__':
+    s = Natural('26')
+    k = Integer.from_natural(s)
+    print(k.sign)
