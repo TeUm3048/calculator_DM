@@ -108,7 +108,8 @@ class Integer:
         return multiply(self, other)
 
     def div(self, other: Integer) -> Integer:
-        return Integer(str(int(self) // int(other)))
+        from .div import div
+        return div(self, other)
 
 
 if __name__ == '__main__':
