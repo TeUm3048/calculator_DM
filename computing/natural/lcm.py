@@ -2,8 +2,6 @@
 # Автор: Ильясов_Марк_2381
 
 from .Natural import Natural
-from gcd import gcd
-from multiply import multiply
 
 def lcm(num1: Natural, num2: Natural) -> Natural:
     return (num1.multiply(num2)).div((num1.gcd(num2)))
