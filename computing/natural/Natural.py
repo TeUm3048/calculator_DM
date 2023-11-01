@@ -107,7 +107,8 @@ class Natural:
 
     def add(self, other: Natural) -> Natural:
         """ Return self+value. """
-        return Natural(str(int(self) + int(other)))
+        from .add import add
+        return add(self, other)
 
     def __add__(self, other: Natural):
         """ Return self+value. """
