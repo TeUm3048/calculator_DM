@@ -56,34 +56,27 @@ class Rational:
             return num1.numerator
         return rat ## под вопросом
 
-    def add(self: Rational, other: Rational):
-        num1 = self.copy()
-        num2 = other.copy()
-        lcm = num1.denominator.lcm(num2.denominator)
-        new_numer = (num1.numerator.multiply(Integer.from_natural(
-            lcm.div(num1.denominator)))).add(
-                num2.numerator.multiply(
-                    Integer.from_natural(lcm.div(num2.denominator))))
-        return Rational([new_numer, lcm]).simplify()
+    def __add__(self, other: Rational) -> Rational:
+        return self.add(other)
 
-    def subtract(self: Rational, other: Rational):
-        num1 = self.copy()
-        num2 = other.copy()
-        num2.numerator = num2.numerator.multiply_by_negative_one()
-        return num1.add(num2)
+    def __sub__(self, other: Rational) -> Rational:
+        return self.subtract(other)
 
-    def multiply(self: Rational, other: Rational):
-        num1 = self.copy()
-        num2 = other.copy()
-        return Rational([num1.numerator.multiply(num2.numerator),
-                         num1.denominator.multiply(num2.denominator)])
+    def add(self: Rational, other: Rational) -> Rational:
+        from .add import add
+        return add(self, other)
 
-    def devide(self: Rational, other: Rational):
-        num1 = self.copy()
-        num2 = other.copy()
-        num2.numerator, num2.denominator = Integer.from_natural(
-            num2.denominator).multiply(Integer(str(num2.numerator.sign))), num2.numerator.number
-        return num1.multiply(num2)
+    def subtract(self: Rational, other: Rational) -> Rational:
+        from .subtract import subtract
+        return subtract(self, other)
+
+    def multiply(self: Rational, other: Rational) -> Rational:
+        from .multiply import multiply
+        return multiply(self, other)
+
+    def divide(self: Rational, other: Rational) -> Rational:
+        from .divide import divide
+        return divide(self, other)
     # def __lt__(self, other: Integer) -> bool:
     #     if self.sign < other.sign:
     #         return True
