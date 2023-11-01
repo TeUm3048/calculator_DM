@@ -13,11 +13,11 @@ def div(num1: Integer, num2: Integer) -> Integer:
     res = Integer(num1.number.div(num2.number))
     if num1.sign < 0 and num2.sign > 0:
         res.sign = -1
-        if num1.number != num2.number * res.number:
-            res.number += 1
+        if num1.number != num2.number.multiply(res.number):
+            res.number = res.number.add(Natural("1"))
     if num1.sign < 0 and num2.sign < 0:
-        if num1.number != num2.number * res.number:
-            res.number += 1
+        if num1.number != num2.number.multiply(res.number):
+            res.number = res.number.add(Natural("1"))
     if num1.sign > 0 and num2.sign < 0:
         res.sign = -1
     return res
