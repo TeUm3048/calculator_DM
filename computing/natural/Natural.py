@@ -11,6 +11,8 @@ class Natural:
         self.data = []
         for digit in value:
             self.data = [int(digit)] + self.data
+        while len(self.data) > 1 and self.data[-1] == 0:
+            self.data.pop()
 
     def __len__(self):
         """ Return len(self). """
