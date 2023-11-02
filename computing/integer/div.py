@@ -3,6 +3,7 @@
 
 
 from .Integer import Integer
+from computing.natural.Natural import Natural
 
 
 def div(num1: Integer, num2: Integer) -> Integer:
