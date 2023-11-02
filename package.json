@@ -1,0 +1,27 @@
+{
+  "name": "calculator_dm",
+  "version": "0.0,0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev": "webpack --watch --mode development ./calculator/calculator/scr/index.js --output-path ./calculator/calculator/static/calculator",
+    "build": "webpack --mode production ./calculator/calculator/scr/index.js --output-path ./calculator/calculator/static/calculator"
+  },
+  "author": "",
+  "license": "MIT",
+  "packageManager": "yarn@4.0.1",
+  "devDependencies": {
+    "@babel/core": "^7.23.2",
+    "@babel/preset-env": "^7.23.2",
+    "@babel/preset-react": "^7.22.15",
+    "babel-loader": "^9.1.3",
+    "babel-plugin-transform-class-properties": "^6.24.1",
+    "webpack": "^5.89.0",
+    "webpack-cli": "^5.1.4"
+  },
+  "dependencies": {
+    "prop-types": "^15.8.1",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
+  }
+}
