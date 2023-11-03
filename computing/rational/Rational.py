@@ -12,7 +12,7 @@ class Rational:
         if isinstance(value, str):
             value = value.split('/')
             if len(value) == 1:
-                self.numerator = Integer(value)
+                self.numerator = Integer(value[0])
                 self.denominator = Natural('1')
             else:
                 self.numerator = Integer(value[0])
