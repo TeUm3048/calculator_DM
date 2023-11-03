@@ -1,3 +1,4 @@
+from __future__ import annotations
 from computing.natural.Natural import Natural
 from computing.integer.Integer import Integer
 from computing.rational.Rational import Rational
@@ -19,3 +20,7 @@ class Polynom:
 
     def __repr__(self):
         return f"Polynom({self})"
+
+    def factor_polynomial_coefficients(self: Polynom) -> Polynom:
+        from .factor_polynomial_coefficients import factor_polynomial_coefficients
+        return factor_polynomial_coefficients(self)
