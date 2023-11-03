@@ -12,3 +12,10 @@ class Polynom:
         while len(self.data) > 1 and self.data[-1] == 0:
             self.data.pop()
         self.degree = len(value)
+
+    def __str__(self):
+        s = ", ".join(str(x) for x in self.data)
+        return f"[{s}]"
+
+    def __repr__(self):
+        return f"Polynom({self})"
