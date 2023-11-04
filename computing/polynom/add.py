@@ -6,15 +6,16 @@ from computing.rational.Rational import Rational
 
 
 def add(self: Polynom, other: Polynom) -> Polynom:
-    num1 = self
-    num2 = other
+    num1 = self.copy()
+    num2 = other.copy()
 
-    res = Polynom([])
-    while len(num1.data) < len(num2.data):
-        num1.data.append(Rational("0"))
-    while len(num2.data) < len(num1.data):
-        num2.data.append(Rational("0"))
+    min_len = min(len(num1.data), len(num2.data))
+    res = [num1.data[i].add(num2.data[i]) for i in range(min_len)]
 
-    for i in range(len(num1.data)):
-        res.data.append(num1.data[i].add(num2.data[i]))
-    return res
+    if len(num1.data) > min_len:
+        res.extend(num1.data[min_len:])
+    elif len(num2.data) > min_len:
+        res.extend(num2.data[min_len:])
+
+    return Polynom(res)
+

@@ -21,6 +21,9 @@ class Polynom:
     def __repr__(self):
         return f"Polynom({self})"
 
+    def copy(self):
+        return Polynom(list(self.data))
+
     def add(self: Polynom, other: Polynom) -> Polynom:
         from .add import add
         return add(self, other)
