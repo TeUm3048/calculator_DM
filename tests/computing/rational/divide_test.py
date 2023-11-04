@@ -1,3 +1,5 @@
+# Автор: Ильясов_Марк_2381
+
 from computing.rational.Rational import Rational
 from tests.computing.rational.generate_rationals import generate_rationals
 

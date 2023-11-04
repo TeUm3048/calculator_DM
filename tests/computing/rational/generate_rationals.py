@@ -1,3 +1,5 @@
+# Автор: Ильясов_Марк_2381
+
 from computing.rational.Rational import Rational
 from computing.integer.Integer import Integer
 from computing.natural.Natural import Natural
