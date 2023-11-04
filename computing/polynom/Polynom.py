@@ -19,3 +19,15 @@ class Polynom:
 
     def __repr__(self):
         return f"Polynom({self})"
+
+    def eliminating_duplicate_roots(self):
+        """
+        Reducing a polynomial:
+         Eliminating multiple roots into prime roots
+         For example,
+         f(x) = (x-1) * (x-2)^2 * (x-3)^3,
+         Then result equals (x-1) * (x-2) * (x-3)
+        """
+        f_der = self.derive()
+        d = self.gcf(f_der)
+        return self // d
