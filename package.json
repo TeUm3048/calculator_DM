@@ -4,8 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev": "webpack --watch --mode development ./calculator/calculator/scr/index.jsx --output-path ./calculator/static/calculator",
-    "build": "webpack --mode production ./calculator/calculator/scr/index.jsx --output-path ./calculator/static/calculator"
+    "dev": "webpack --watch --mode development",
+    "build": "webpack --mode production"
   },
   "author": "",
   "license": "MIT",

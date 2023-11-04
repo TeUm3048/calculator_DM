@@ -1,9 +1,9 @@
 const path = require("path");
 
 module.exports = {
-  entry: "./scr/index.jsx",
+  entry: "./calculator/scr/",
   output: {
-    path: path.resolve(__dirname, "./static"),
+    path: path.resolve(__dirname, "calculator/static"),
     filename: "main.js",
   },
   module: {
@@ -25,6 +25,6 @@ module.exports = {
   },
   // pass all js files through Babel
   resolve: {
-    extensions: ["*", ".js", ".jsx", ".ts", ".tsx"], // <-- added `.jsx` here
+    extensions: [".*", ".js", ".jsx", ".ts", ".tsx"], // <-- added `.jsx` here
   },
 };
