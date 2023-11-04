@@ -83,10 +83,12 @@ class Rational:
         num2 = other.numerator.multiply(Integer.from_natural(self.denominator))
         return num1 < num2
 
+
     def __eq__(self, other):
         if isinstance(other, Rational):
             return self.numerator == other.numerator and self.denominator == other.denominator
         return False
+
 
     def __le__(self, other: Rational) -> bool:
         return (self < other) or (self == other)
