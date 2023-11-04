@@ -77,31 +77,28 @@ class Rational:
     def divide(self: Rational, other: Rational) -> Rational:
         from .divide import divide
         return divide(self, other)
-    # def __lt__(self, other: Integer) -> bool:
-    #     if self.sign < other.sign:
-    #         return True
-    #     if self.sign > other.sign:
-    #         return False
-    #     if self.sign == 1:
-    #         return self.number < other.number
-    #     if self.sign == -1:
-    #         return self.number > other.number
-    #     return False
 
-    # def __eq__(self, other: Integer) -> bool:
-    #     return self.sign == other.sign and self.number == other.number
+    def __lt__(self, other: Rational) -> bool:
+        num1 = self.numerator.multiply(Integer.from_natural(other.denominator))
+        num2 = other.numerator.multiply(Integer.from_natural(self.denominator))
+        return num1 < num2
 
-    # def __le__(self, other: Integer) -> bool:
-    #     return (self < other) or (self == other)
+    def __eq__(self, other: Rational) -> bool:
+        num1 = self.copy().simplify()
+        num2 = other.copy().simplify()
+        return num1.numerator == num2.numerator and num1.denominator == num2.denominator
 
-    # def __ne__(self, other: Integer) -> bool:
-    #     return not (self == other)
+    def __le__(self, other: Rational) -> bool:
+        return (self < other) or (self == other)
 
-    # def __gt__(self, other: Integer) -> bool:
-    #     return not (self <= other)
+    def __ne__(self, other: Rational) -> bool:
+        return not (self == other)
 
-    # def __ge__(self, other: Integer) -> bool:
-    #     return not (self < other)
+    def __gt__(self, other: Rational) -> bool:
+        return not (self <= other)
+
+    def __ge__(self, other: Rational) -> bool:
+        return not (self < other)
 
 
 if __name__ == '__main__':
