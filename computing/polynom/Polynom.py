@@ -20,6 +20,6 @@ class Polynom:
     def __repr__(self):
         return f"Polynom({self})"
     
-    def GCF(self, other: Polynom) -> Polynom:
-        from .GCF import GCF 
-        return GCF(self, other)
+    def gcd(self, other: Polynom) -> Polynom:
+        from .gcd import gcd 
+        return gcd(self, other)

@@ -5,7 +5,7 @@
 
 from .Polynom import Polynom
 
-def DCF(self: Polynom, other: Polynom)-> Polynom:
+def gcd(self: Polynom, other: Polynom)-> Polynom:
     pol1 = self.copy()
     pol2 = other.copy()
 
@@ -16,5 +16,4 @@ def DCF(self: Polynom, other: Polynom)-> Polynom:
             pol2 = pol2.mod(pol1)
     if pol1.get_degree() == 0:
         return pol2
-    else:
-        return pol1
+    return pol1
