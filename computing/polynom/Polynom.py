@@ -9,7 +9,7 @@ class Polynom:
 
     def __init__(self, value: list[Rational]) -> None:
         self.data = value
-        while len(self.data) > 1 and self.data[-1] == 0:
+        while len(self.data) > 1 and self.data[-1] == Rational('0'):
             self.data.pop()
         self.degree = len(value)
 
@@ -19,3 +19,7 @@ class Polynom:
 
     def __repr__(self):
         return f"Polynom({self})"
+
+    def get_degree(self):
+        from .get_degree import get_degree
+        return get_degree(self)
