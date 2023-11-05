@@ -12,6 +12,7 @@ def test_1():
     curr_res = Polynom([Rational("4"), Rational("0"), Rational("-18"), Rational("20")])
     assert str(b) == str(curr_res)
 
+
 def test_2():
     # 3x^0  + 4x^1  + 1x^2  + 7x^3  + 0x^4  + 8x^5  + -10x^6  + 4x^7
     a = Polynom([Rational("3"), Rational("4"), Rational("1"), Rational("7"), Rational("0"),
@@ -22,10 +23,20 @@ def test_2():
                         Rational("40"), Rational("-60"), Rational("28")])
     assert str(b) == str(curr_res)
 
+
 def test_zero():
     # 0x^0  + 1x^1  + 0x^2
     a = Polynom([Rational("0"), Rational("1"), Rational("0")])
     b = a.derive()
     # 1x^0  + 0x^1
     curr_res = Polynom([Rational("1"), Rational("0")])
+    assert str(b) == str(curr_res)
+
+
+def test_degree_0():
+    # 4x^0
+    a = Polynom([Rational("4")])
+    b = a.derive()
+    # 0x^0
+    curr_res = Polynom([Rational("0")])
     assert str(b) == str(curr_res)
