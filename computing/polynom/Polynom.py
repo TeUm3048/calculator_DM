@@ -94,3 +94,8 @@ class Polynom:
         return multiply_by_scalar(self, scalar)
         return mod(self,other)
 
+    def multiply(self: Polynom, other: Polynom) -> Polynom:
+        from .multiply import multiply
+        return multiply(self, other)
+
+
