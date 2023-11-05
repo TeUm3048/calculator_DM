@@ -20,20 +20,18 @@ class Rational:
         else:
             self.numerator = value[0]
             self.denominator = value[1]
-        
+
         if self.denominator == Natural('0'):
             raise ZeroDivisionError
 
-
     def __float__(self):
-        return int(self.numerator)/int(self.denominator)
+        return int(self.numerator) / int(self.denominator)
 
     def __mul__(self, other):
         return self.multiply(other)
-    
-    def  __truediv__(self, other):
+
+    def __truediv__(self, other):
         return self.divide(other)
-    
 
     def simplify(self: Rational):
         if self.numerator.sign == 0:
@@ -93,12 +91,10 @@ class Rational:
         num2 = other.numerator.multiply(Integer.from_natural(self.denominator))
         return num1 < num2
 
-
-    def __eq__(self, other):
-        if isinstance(other, Rational):
-            return self.numerator == other.numerator and self.denominator == other.denominator
-        return False
-
+    def __eq__(self, other: Rational) -> bool:
+        num1 = self.copy().simplify()
+        num2 = other.copy().simplify()
+        return num1.numerator == num2.numerator and num1.denominator == num2.denominator
 
     def __le__(self, other: Rational) -> bool:
         return (self < other) or (self == other)
