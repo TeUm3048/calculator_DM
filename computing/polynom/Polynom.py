@@ -8,10 +8,12 @@ class Polynom:
     degree: int
 
     def __init__(self, value: list[Rational]) -> None:
+        if value == []:
+            self.data = [Rational("0")]
+            return
         self.data = value
         while len(self.data) > 1 and self.data[-1] == Rational("0"):
             self.data.pop()
-        self.degree = len(value)
 
     def __str__(self):
         s = ", ".join(str(x) for x in self.data)
