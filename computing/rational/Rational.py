@@ -64,7 +64,7 @@ class Rational:
         num1 = rat.copy().simplify()
         if num1.denominator == Natural('1'):
             return num1.numerator
-        return rat ## под вопросом
+        return rat  ## под вопросом
 
     def __add__(self, other: Rational) -> Rational:
         return self.add(other)
@@ -93,10 +93,12 @@ class Rational:
         num2 = other.numerator.multiply(Integer.from_natural(self.denominator))
         return num1 < num2
 
-    def __eq__(self, other: Rational) -> bool:
-        num1 = self.copy().simplify()
-        num2 = other.copy().simplify()
-        return num1.numerator == num2.numerator and num1.denominator == num2.denominator
+
+    def __eq__(self, other):
+        if isinstance(other, Rational):
+            return self.numerator == other.numerator and self.denominator == other.denominator
+        return False
+
 
     def __le__(self, other: Rational) -> bool:
         return (self < other) or (self == other)
