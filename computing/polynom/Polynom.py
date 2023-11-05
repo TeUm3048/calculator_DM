@@ -5,7 +5,6 @@ from computing.rational.Rational import Rational
 
 class Polynom:
     data: list[Rational]
-    degree: int
 
     def __init__(self, value: list[Rational]) -> None:
         if value == []:
