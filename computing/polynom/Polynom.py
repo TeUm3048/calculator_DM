@@ -1,3 +1,4 @@
+from __future__ import annotations
 from computing.natural.Natural import Natural
 from computing.integer.Integer import Integer
 from computing.rational.Rational import Rational
@@ -9,7 +10,7 @@ class Polynom:
 
     def __init__(self, value: list[Rational]) -> None:
         self.data = value
-        while len(self.data) > 1 and self.data[-1] == 0:
+        while len(self.data) > 1 and self.data[-1] == Rational("0"):
             self.data.pop()
         self.degree = len(value)
 
@@ -19,3 +20,14 @@ class Polynom:
 
     def __repr__(self):
         return f"Polynom({self})"
+
+    def copy(self):
+        return Polynom(list(self.data))
+
+    def add(self: Polynom, other: Polynom) -> Polynom:
+        from .add import add
+        return add(self, other)
+
+    def subtract(self: Polynom, other: Polynom) -> Polynom:
+        from .subtract import subtract
+        return subtract(self, other)
