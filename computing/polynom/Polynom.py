@@ -43,7 +43,7 @@ class Polynom:
         self[index] = value
 
     def degree(self) -> int:
-        return len(self) - 1
+        return self.get_degree()
     
     def is_null(self) -> bool:
         return self.data == Polynom([Rational("0")])
