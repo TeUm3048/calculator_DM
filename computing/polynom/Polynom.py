@@ -1,3 +1,4 @@
+from __future__ import annotations
 from computing.natural.Natural import Natural
 from computing.integer.Integer import Integer
 from computing.rational.Rational import Rational
@@ -28,3 +29,14 @@ class Polynom:
     def get_leading_coefficient(self):
         from .get_leading_coefficient import get_leading_coefficient
         return get_leading_coefficient(self)
+
+    def copy(self):
+        return Polynom(list(self.data))
+
+    def add(self: Polynom, other: Polynom) -> Polynom:
+        from .add import add
+        return add(self, other)
+
+    def subtract(self: Polynom, other: Polynom) -> Polynom:
+        from .subtract import subtract
+        return subtract(self, other)
