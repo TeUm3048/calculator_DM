@@ -10,7 +10,7 @@ class Polynom:
 
     def __init__(self, value: list[Rational]) -> None:
         self.data = value
-        while len(self.data) > 1 and self.data[-1] == 0:
+        while len(self.data) > 1 and self.data[-1] == Rational("0"):
             self.data.pop()
         self.degree = len(value)
 
@@ -27,3 +27,7 @@ class Polynom:
     def add(self: Polynom, other: Polynom) -> Polynom:
         from .add import add
         return add(self, other)
+
+    def subtract(self: Polynom, other: Polynom) -> Polynom:
+        from .subtract import subtract
+        return subtract(self, other)
