@@ -16,4 +16,4 @@ def test_get_leading_coefficient():
     assert p.get_leading_coefficient() == Rational('0')
 
     p = Polynom([])
-    assert p.get_leading_coefficient() is None
+    assert p.get_leading_coefficient() == Rational('0')
