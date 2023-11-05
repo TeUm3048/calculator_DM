@@ -17,17 +17,27 @@ class Rational:
             else:
                 self.numerator = Integer(value[0])
                 self.denominator = Natural(value[1])
-            if self.denominator == Natural('0'):
-                raise ZeroDivisionError
         else:
             self.numerator = value[0]
             self.denominator = value[1]
-            if self.denominator == Natural('0'):
-                raise ZeroDivisionError
+        
+        if self.denominator == Natural('0'):
+            raise ZeroDivisionError
 
-    # def __int__(self):
-    #     return int(self.number) * self.sign
+
+    def __float__(self):
+        return int(self.numerator)/int(self.denominator)
+
+    def __mul__(self, other):
+        return self.multiply(other)
+    
+    def  __truediv__(self, other):
+        return self.divide(other)
+    
+
     def simplify(self: Rational):
+        if self.numerator.sign == 0:
+            return Rational("0")
         gcd = self.numerator.number.gcd(self.denominator)
         return Rational([self.numerator.div(Integer.from_natural(gcd)),
                          self.denominator.div(gcd)])
