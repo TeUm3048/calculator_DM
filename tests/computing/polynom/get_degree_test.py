@@ -10,4 +10,4 @@ def test_get_degree():
     assert p.get_degree() == 2
 
     p = Polynom([])
-    assert p.get_degree() == -1
+    assert p.get_degree() == 0
