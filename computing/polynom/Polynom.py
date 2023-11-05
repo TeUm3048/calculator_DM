@@ -77,7 +77,11 @@ class Polynom:
         from .subtract import subtract
         return subtract(self, other)
 
-    def factor_polynomial_coefficients(self: Polynom) -> Polynom:
+    def derive(self: Polynom) -> Polynom:
+        from .derive import derive
+        return derive(self)
+
+      def factor_polynomial_coefficients(self: Polynom) -> Polynom:
         from .factor_polynomial_coefficients import factor_polynomial_coefficients
         return factor_polynomial_coefficients(self)
     
