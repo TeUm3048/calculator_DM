@@ -2,7 +2,6 @@
 # Автор: Кривов_Савелий_2381
 
 from computing.polynom.Polynom import Polynom
-from computing.rational.Rational import Rational
 
 
 def add(self: Polynom, other: Polynom) -> Polynom:
@@ -18,4 +17,3 @@ def add(self: Polynom, other: Polynom) -> Polynom:
         res.extend(num2.data[min_len:])
 
     return Polynom(res)
-
