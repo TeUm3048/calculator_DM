@@ -20,20 +20,18 @@ class Rational:
         else:
             self.numerator = value[0]
             self.denominator = value[1]
-        
+
         if self.denominator == Natural('0'):
             raise ZeroDivisionError
 
-
     def __float__(self):
-        return int(self.numerator)/int(self.denominator)
+        return int(self.numerator) / int(self.denominator)
 
     def __mul__(self, other):
         return self.multiply(other)
-    
-    def  __truediv__(self, other):
+
+    def __truediv__(self, other):
         return self.divide(other)
-    
 
     def simplify(self: Rational):
         if self.numerator.sign == 0:
@@ -64,7 +62,7 @@ class Rational:
         num1 = rat.copy().simplify()
         if num1.denominator == Natural('1'):
             return num1.numerator
-        return rat ## под вопросом
+        return rat  ## под вопросом
 
     def __add__(self, other: Rational) -> Rational:
         return self.add(other)
