@@ -81,3 +81,6 @@ class Polynom:
     def mod(self: Polynom, other: Polynom) -> Polynom:
         from .mod import mod
         return mod(self,other)
+
+    def multiply_by_scalar(self: Polynom, scalar: Rational) -> Polynom:
+        from .mul
