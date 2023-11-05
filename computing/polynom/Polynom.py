@@ -40,3 +40,7 @@ class Polynom:
     def subtract(self: Polynom, other: Polynom) -> Polynom:
         from .subtract import subtract
         return subtract(self, other)
+
+    def mod(self: Polynom, other: Polynom) -> Polynom:
+        from .mod import mod
+        return mod(self,other)
