@@ -51,7 +51,7 @@ class Polynom:
         return self.get_degree()
 
     def is_null(self) -> bool:
-        return self.data == Polynom([Rational("0")])
+        return self == Polynom([Rational("0")])
 
     def to_numpy(self) -> numpy_polynom:
         return numpy_polynom(map(float, self.data))

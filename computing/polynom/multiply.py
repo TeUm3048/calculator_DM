@@ -2,15 +2,17 @@
 # Автор: Потапова_Дарья_2381
 
 
-from .Polynom import Polynom
+from computing.polynom.Polynom import Polynom
 from computing.rational.Rational import Rational
 
 
-def multiply (poly1: Polynom, poly2: Polynom) -> Polynom:
+def multiply(poly1: Polynom, poly2: Polynom) -> Polynom:
     result = Polynom([Rational("0")])
-    for i in range(len(poly1.data) + len(poly2.data) - 2):
-        result.data.append(Rational("0"))
-    for i in range(len(poly1.data)):
-        for j in range(len(poly2.data)):
-            result.data[i + j] = result.data[i + j].add(poly1.data[i].multiply(poly2.data[j]))
+    pol1 = poly1.copy()
+    pol2 = poly2.copy()
+    for i in range(pol2.get_degree() + 1):
+        added = pol1.multiply_by_monomial(i)
+        result = result.add(added.multiply_by_scalar(pol2.data[i]))
     return result
+
+

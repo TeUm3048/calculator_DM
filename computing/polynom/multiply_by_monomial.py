@@ -6,13 +6,14 @@ from computing.rational.Rational import Rational
 from computing.natural.Natural import Natural
 
 
-def multiply_by_monomial(self: Polynom, k: int | Natural) -> Polynom:
-    if (self.is_null()):
+def multiply_by_monomial(self: Polynom, k: "int | Natural") -> Polynom:
+
+    if self.is_null():
         return self.copy()
 
-    if (isinstance(k, int)):
+    if isinstance(k, int):
         result = self.copy()
-        result.data = [Polynom(Rational("0")) for i in range(k)] + result.data
+        result.data = [Rational("0") for i in range(k)] + result.data
         return result
     
     result = Polynom.copy()
