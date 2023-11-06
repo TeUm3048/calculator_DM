@@ -57,6 +57,18 @@ class Polynom:
     def copy(self) -> Polynom:
         return Polynom([coefficient.copy() for coefficient in self.data])
 
+    def eliminating_duplicate_roots(self):
+        """
+        Reducing a polynomial:
+         Eliminating multiple roots into prime roots
+         For example,
+         f(x) = (x-1) * (x-2)^2 * (x-3)^3,
+         Then result equals (x-1) * (x-2) * (x-3)
+        """
+        f_der = self.derive()
+        d = self.gcf(f_der)
+        return self // d
+
     def multiply_by_monomial(self: Polynom, k: int | Natural) -> Polynom:
         from .multiply_by_monomial import multiply_by_monomial
         return multiply_by_monomial(self, k)
