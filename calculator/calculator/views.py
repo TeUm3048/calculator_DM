@@ -48,6 +48,8 @@ class NaturalOperatorView(APIView):
             if not (a_ser.is_valid()):
                 return Response({"Error": "Invalid value", "args": args}, status= 500)
 
+            
+
         res = Natural("0")
         match operator:
             case 'natural_compare':
