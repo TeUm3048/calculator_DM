@@ -3,7 +3,10 @@ from computing.natural.Natural import Natural
 from computing.integer.Integer import Integer
 from computing.rational.Rational import Rational
 from numpy.polynomial import Polynomial as numpy_polynom
+from fractions import Fraction
+import warnings
 
+FLOAT_EQUAL_THRESHOLD = 0.000_000_001
 
 class Polynom:
     data: list[Rational]
@@ -21,7 +24,17 @@ class Polynom:
 
     def __eq__(self, other: Polynom | numpy_polynom):
         if isinstance(other, numpy_polynom):
-            return self.to_numpy() == other
+            converted_self = self.to_numpy()
+            #if converted_self.degree() != other.degree():
+            #    return False
+            pos = lambda x: x if x > 0 else 0
+            coef1 = list(converted_self.coef) + [0.0] * (pos(other.degree() - converted_self.degree()))
+            coef2 = list(other.coef) + [0.0] * (pos(converted_self.degree() - other.degree()))
+            
+            for c1, c2 in zip(coef1, coef2):
+                if abs(c1 - c2) > FLOAT_EQUAL_THRESHOLD:
+                    return False
+            return True
 
         if self.degree() != other.degree():
             return False
@@ -45,20 +58,33 @@ class Polynom:
         return self.data[index]
 
     def __setitem__(self, index: int, value: Rational) -> None:
-        self[index] = value
+        self.data[index] = value
 
     def degree(self) -> int:
         return self.get_degree()
 
     def is_null(self) -> bool:
-        return self.data == Polynom([Rational("0")])
+        return self == Polynom([Rational("0")])
 
     def to_numpy(self) -> numpy_polynom:
-        return numpy_polynom(map(float, self.data))
+        return numpy_polynom(list(map(float, self.data)))
 
+    @staticmethod
+    def from_numpy(polynomial: numpy_polynom):
+        fraction_data = map(Fraction.from_float, polynomial.coef)
+        from_fraction_to_rational = lambda x: Rational(f"{x.numerator}/{x.denominator}")
+        rational_data = list(map(from_fraction_to_rational, fraction_data))
+        return Polynom(rational_data)
+    
     def copy(self) -> Polynom:
         return Polynom([coefficient.copy() for coefficient in self.data])
 
+    def multiply(self, other: Polynom):
+        ### ЗАГЛУШКА ###
+        warnings.warn('Вместо multiply используется заглушка')
+        return Polynom.from_numpy(self.to_numpy() * other.to_numpy())
+
+ 
     def divide(self, other: Polynom) -> Polynom:
         from .divide import divide
         return self.divide(other)
@@ -113,4 +139,3 @@ class Polynom:
     def multiply_by_scalar(self: Polynom, scalar: Rational) -> Polynom:
         from .multiply_by_scalar import multiply_by_scalar
         return multiply_by_scalar(self, scalar)
-        return mod(self, other)
