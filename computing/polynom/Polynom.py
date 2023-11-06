@@ -36,6 +36,9 @@ class Polynom:
     def __repr__(self) -> str:
         return f"Polynom({self})"
     
+    def gcd(self, other: Polynom) -> Polynom:
+        from .gcd import gcd 
+        return gcd(self, other)
     def __getitem__(self, index: int | slice) -> Rational:
         return self.data[index]
     
