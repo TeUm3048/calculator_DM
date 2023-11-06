@@ -47,10 +47,10 @@ class NaturalOperatorView(APIView):
             a_ser = NaturalSerializer(data=args[0])
             b_ser = NaturalSerializer(data=args[1])
         except Exception:
-            return Response({"Error": "Invalid value", "request": request.data}, status=500)
+            return Response({"Error": "Invalid value", "request": request.data}, status=300)
 
         if not (a_ser.is_valid() and b_ser.is_valid()):
-            return Response({"Error": "Invalid value", "args": args}, status=500)
+            return Response({"Error": "Invalid value", "args": args}, status=300)
 
         res = Natural("0")
         match operator:
