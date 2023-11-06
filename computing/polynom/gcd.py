@@ -17,6 +17,6 @@ def gcd(self: Polynom, other: Polynom)-> Polynom:
         else:
             pol2 = pol2.mod(pol1)
             deg2 = deg2.get_degree()
-    if pol1.get_degree() == 0:
+    if deg1 == 0:
         return pol2
     return pol1
