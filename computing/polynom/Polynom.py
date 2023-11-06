@@ -46,7 +46,7 @@ class Polynom:
         self[index] = value
 
     def degree(self) -> int:
-        return len(self) - 1
+        return self.get_degree()
     
     def is_null(self) -> bool:
         return self.data == Polynom([Rational("0")])
@@ -57,7 +57,10 @@ class Polynom:
     def copy(self) -> Polynom:
         return Polynom([coefficient.copy() for coefficient in self.data])
 
-
+    def multiply_by_monomial(self: Polynom, k: int | Natural) -> Polynom:
+        from .multiply_by_monomial import multiply_by_monomial
+        return multiply_by_monomial(self, k)
+    
     def get_degree(self):
         from .get_degree import get_degree
         return get_degree(self)
@@ -77,10 +80,14 @@ class Polynom:
         from .subtract import subtract
         return subtract(self, other)
 
-    def factor_polynomial_coefficients(self: Polynom) -> Polynom:
+    def derive(self: Polynom) -> Polynom:
+        from .derive import derive
+        return derive(self)
+
+      def factor_polynomial_coefficients(self: Polynom) -> Polynom:
         from .factor_polynomial_coefficients import factor_polynomial_coefficients
         return factor_polynomial_coefficients(self)
-  
+    
     def mod(self: Polynom, other: Polynom) -> Polynom:
         from .mod import mod
         return mod(self, other)
