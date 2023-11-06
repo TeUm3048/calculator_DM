@@ -3,7 +3,7 @@ import { NaturalNumber, NaturalOperatorData } from "./NaturalOperator";
 
 const calculateNaturalOperator = async (body: NaturalOperatorData) => {
   return axios
-    .post<NaturalNumber>("/api", body, {
+    .post<NaturalNumber>("/api/", body, {
       headers: {
         "Content-Type": "application/json",
       },
