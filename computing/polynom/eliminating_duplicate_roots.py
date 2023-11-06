@@ -1,5 +1,5 @@
 from computing.polynom.Polynom import Polynom
-from computing.rational.Rational import Rational
+
 
 def eliminating_duplicate_roots(self: Polynom):
     f_der = self.derive()
