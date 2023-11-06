@@ -9,9 +9,9 @@
 
 ## Шаг 2. Устанавливаем пакетный менеджер yarn
 
-Почему [yarn](https://yarnpkg.com/getting-started)? — потому что.
+Почему [yarn](https://yarnpkg.csom/getting-started)? — потому что.
 
-Начнём с включения [Corepack](https://nodejs.org/dist/latest/docs/api/corepack.html), если он еще не включен:
+Начнём с включения [Corepack](https://nodejs.org/dist/clatest/docs/api/corepack.html), если он еще не включен:
 
 ```bash
 corepack enable
