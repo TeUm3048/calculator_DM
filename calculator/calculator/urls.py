@@ -19,5 +19,6 @@ from . import views
 
 urlpatterns = [
     path("", views.index),
+    path("api/", views.NaturalOperatorView.as_view()),
     path('admin/', admin.site.urls),
 ]
