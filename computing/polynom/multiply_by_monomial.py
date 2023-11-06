@@ -12,8 +12,8 @@ def multiply_by_monomial(self: Polynom, k: int | Natural) -> Polynom:
 
     if (isinstance(k, int)):
         result = self.copy()
-        result.data = [Polynom(Rational("0")) for i in range(k)] + result.data
-        return result
+        result.data = [Rational("0") for i in range(k)] + result.data
+        return Polynom(result.data)
     
     result = Polynom.copy()
     power = k.copy()

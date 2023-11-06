@@ -1,24 +1,28 @@
+# DIV_PP_P
 # Автор: Ильясов_Марк_2381
 
-### ВНИМАНИЕ: ЧЕРНОВИК, НЕ ПОДВЕРГАЛСЯ ТЕСТИРОВАНИЮ
-
-
-import warnings
 from computing.polynom.Polynom import Polynom
 from computing.rational.Rational import Rational
 
 
 def divide(self: Polynom, other: Polynom) -> Polynom:
-    warnings.warn('divide это всего лишь черновик функции')
     if other.is_null():
         raise ZeroDivisionError
-    if self.degree < other.degree:
+    if self.degree() < other.degree() or self.is_null():
         return Polynom([Rational("0")])
+    
     a = self.copy()
     b = other.copy()
     result = Polynom([Rational("0")])
-    while a.degree() >= b.degree():
+
+    DELETE_THIS = 0
+    while a.degree() >= b.degree() and not a.is_null():
         coefficient = a[-1] / b[-1]
-        result += Polynom([coefficient]).multiply_by_monomial(a.degree - b.degree)
-        a -= b.multiply_by_scalar(coefficient)
+        result = result.add(Polynom([coefficient]).multiply_by_monomial(a.degree() - b.degree()))
+        a = a.subtract(b.multiply_by_monomial(a.degree() - b.degree()).multiply_by_scalar(coefficient))
+
+        DELETE_THIS += 1
+        if DELETE_THIS > 20:
+            raise RuntimeError(f"что-то пошло не так {str(self)}, {str(other)}")
+    
     return result
