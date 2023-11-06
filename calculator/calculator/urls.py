@@ -19,6 +19,10 @@ from . import views
 
 urlpatterns = [
     path("", views.index),
+    path("int", views.index),
+    path("rat", views.index),
+    path("poly", views.index),
+    path("test", views.index),
     path("api/", views.NaturalOperatorView.as_view()),
     path('admin/', admin.site.urls),
 ]

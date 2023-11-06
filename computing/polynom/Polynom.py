@@ -7,6 +7,7 @@ from fractions import Fraction
 import warnings
 
 FLOAT_EQUAL_THRESHOLD = 0.000_000_001
+
 class Polynom:
     data: list[Rational]
 
@@ -20,7 +21,7 @@ class Polynom:
 
     def __len__(self):
         return len(self.data)
-    
+
     def __eq__(self, other: Polynom | numpy_polynom):
         if isinstance(other, numpy_polynom):
             converted_self = self.to_numpy()
@@ -41,26 +42,27 @@ class Polynom:
             if self[i] != other[i]:
                 return False
         return True
-    
+
     def __str__(self) -> str:
         s = ", ".join(str(x) for x in self.data)
         return f"[{s}]"
 
     def __repr__(self) -> str:
         return f"Polynom({self})"
-    
+
     def gcd(self, other: Polynom) -> Polynom:
-        from .gcd import gcd 
+        from .gcd import gcd
         return gcd(self, other)
+
     def __getitem__(self, index: int | slice) -> Rational:
         return self.data[index]
-    
+
     def __setitem__(self, index: int, value: Rational) -> None:
         self.data[index] = value
 
     def degree(self) -> int:
         return self.get_degree()
-    
+
     def is_null(self) -> bool:
         return self == Polynom([Rational("0")])
 
@@ -82,14 +84,27 @@ class Polynom:
         warnings.warn('Вместо multiply используется заглушка')
         return Polynom.from_numpy(self.to_numpy() * other.to_numpy())
 
-    def multiply_by_monomial(self, k: int | Natural) -> Polynom:
+ 
+    def divide(self, other: Polynom) -> Polynom:
+        from .divide import divide
+        return self.divide(other)
+
+    def eliminating_duplicate_roots(self):
+        """
+        Reducing a polynomial:
+         Eliminating multiple roots into prime roots
+         For example,
+         f(x) = (x-1) * (x-2)^2 * (x-3)^3,
+         Then result equals (x-1) * (x-2) * (x-3)
+        """
+        f_der = self.derive()
+        d = self.gcd(f_der)
+        return self.divide(d)
+
+    def multiply_by_monomial(self: Polynom, k: int | Natural) -> Polynom:
         from .multiply_by_monomial import multiply_by_monomial
         return multiply_by_monomial(self, k)
-    
-    def divide(self, other: Polynom):
-        from .divide import divide
-        return divide(self, other)
-    
+
     def get_degree(self):
         from .get_degree import get_degree
         return get_degree(self)
@@ -116,7 +131,7 @@ class Polynom:
     def factor_polynomial_coefficients(self: Polynom) -> Polynom:
         from .factor_polynomial_coefficients import factor_polynomial_coefficients
         return factor_polynomial_coefficients(self)
-    
+
     def mod(self: Polynom, other: Polynom) -> Polynom:
         from .mod import mod
         return mod(self, other)
@@ -124,4 +139,3 @@ class Polynom:
     def multiply_by_scalar(self: Polynom, scalar: Rational) -> Polynom:
         from .multiply_by_scalar import multiply_by_scalar
         return multiply_by_scalar(self, scalar)
-
