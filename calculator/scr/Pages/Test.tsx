@@ -21,7 +21,7 @@ const Test = () => {
     setNum1(refInput1.current.value);
     setNum2(refInput2.current.value);
 
-    if (!num1 || !num2) {
+    if (!num1 || !num2 || !operator) {
       return;
     }
 
@@ -55,8 +55,7 @@ const Test = () => {
         onClick={(e) => {
           setOperator("natural_mod");
         }}
-      >
-      </button>
+      ></button>
       <button onClick={handleSubmit}> = </button>
     </div>
   );
