@@ -46,9 +46,7 @@ class NaturalOperatorView(APIView):
             return Response({"Error": "Invalid value", "request": request.data}, status=500)
         for a_ser in serialized_args:
             if not (a_ser.is_valid()):
-                return Response({"Error": "Invalid value", "args": args}, status= 500)
-
-            
+                return Response({"Error": "Invalid value", "args": args}, status=500)
 
         res = Natural("0")
         match operator:

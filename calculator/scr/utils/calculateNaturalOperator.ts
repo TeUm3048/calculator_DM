@@ -1,7 +1,22 @@
 import axios from "axios";
-import { NaturalNumber, NaturalOperatorData } from "./NaturalOperator";
+import {
+  NaturalNumber,
+  NaturalOperatorData,
+  NaturalOperator,
+} from "./NaturalOperator";
+import Natural from "../Pages/Natural";
 
-const calculateNaturalOperator = async (body: NaturalOperatorData) => {
+const calculateNaturalOperator = async (
+  operator: NaturalOperator,
+  args: string[]
+) => {
+  const body: NaturalOperatorData = {
+    operator: operator,
+    args: args.map((el) => {
+      return { num: el };
+    }),
+  };
+
   return axios
     .post<NaturalNumber>("/api/", body, {
       headers: {

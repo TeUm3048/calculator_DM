@@ -8,6 +8,7 @@ import warnings
 
 FLOAT_EQUAL_THRESHOLD = 0.000_000_001
 
+
 class Polynom:
     data: list[Rational]
 
@@ -25,12 +26,12 @@ class Polynom:
     def __eq__(self, other: Polynom | numpy_polynom):
         if isinstance(other, numpy_polynom):
             converted_self = self.to_numpy()
-            #if converted_self.degree() != other.degree():
+            # if converted_self.degree() != other.degree():
             #    return False
             pos = lambda x: x if x > 0 else 0
             coef1 = list(converted_self.coef) + [0.0] * (pos(other.degree() - converted_self.degree()))
             coef2 = list(other.coef) + [0.0] * (pos(converted_self.degree() - other.degree()))
-            
+
             for c1, c2 in zip(coef1, coef2):
                 if abs(c1 - c2) > FLOAT_EQUAL_THRESHOLD:
                     return False
@@ -75,7 +76,7 @@ class Polynom:
         from_fraction_to_rational = lambda x: Rational(f"{x.numerator}/{x.denominator}")
         rational_data = list(map(from_fraction_to_rational, fraction_data))
         return Polynom(rational_data)
-    
+
     def copy(self) -> Polynom:
         return Polynom([coefficient.copy() for coefficient in self.data])
 
@@ -84,10 +85,9 @@ class Polynom:
         warnings.warn('Вместо multiply используется заглушка')
         return Polynom.from_numpy(self.to_numpy() * other.to_numpy())
 
- 
     def divide(self, other: Polynom) -> Polynom:
         from .divide import divide
-        return self.divide(other)
+        return divide(self, other)
 
     def eliminating_duplicate_roots(self):
         """
