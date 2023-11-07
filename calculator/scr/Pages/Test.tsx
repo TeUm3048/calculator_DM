@@ -21,21 +21,22 @@ const Test = () => {
     if (!refInput2 || !refInput2.current) {
       throw new TypeError("Input2 is not valid");
     }
-    if (!refInput3 || !refInput3.current) {
-      throw new TypeError("Input2 is not valid");
-    }
+    // if (!refInput3 || !refInput3.current) {
+    //   throw new TypeError("Input3 is not valid");
+    // }
 
     setNum1(refInput1.current.value);
     setNum2(refInput2.current.value);
-    setNum3(refInput3.current.value);
+    // setNum3(refInput3.current.value);
 
-    if (!num1 || !operator) {
+    if (!num1 || !num2 || !operator) {
       return;
     }
 
     calculateNaturalOperator(
       operator,
       num3 && num2 ? [num1, num2, num3] : num2 ? [num1, num2] : [num1]
+      // [num1, num2]
     ).then((value) => {
       setNum1(value.num);
       setNum2("");
