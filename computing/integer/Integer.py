@@ -80,6 +80,11 @@ class Integer:
     def from_natural(natural: Natural):
         return Integer(natural)
 
+    def to_natural(integer: Integer):
+        if integer < 0:
+            raise ValueError("отрицательное")
+        return Natural(integer.number)
+
     def multiply_by_negative_one(self) -> Integer:
         num = self.copy()
         num.sign = num.sign * (-1)
