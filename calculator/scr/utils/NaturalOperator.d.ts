@@ -9,16 +9,17 @@ type Operator =
   | "div"
   | "mod"
   | "gcd"
-  | "lcm";
+  | "lcm"
+  | "is_not_zero"
+  | "get_digit_of_division_with_power";
 
 export type NaturalOperator = `natural_${Operator}`;
 
-export type NaturalNumber = {
-  type: "natural";
-  num: `${number}`;
-};
+export interface NaturalNumber {
+  num: string;
+}
 
 export interface NaturalOperatorData {
   operator: NaturalOperator;
-  args: [NaturalNumber, NaturalNumber?];
+  args: NaturalNumber[];
 }

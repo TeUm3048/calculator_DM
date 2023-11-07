@@ -1,0 +1,21 @@
+.wrapper {
+  margin: 0 auto;
+  width: 240px;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.input {
+  display: block;
+}
+
+.btn_container {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  gap: 10px;
+}
+.btn {
+  display: block;
+}
