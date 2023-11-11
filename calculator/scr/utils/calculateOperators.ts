@@ -4,6 +4,8 @@ import {
   NaturalOperator,
   IntegerNumber,
   IntegerOperator,
+  RationalNumber,
+  RationalOperator,
 } from "./Operators";
 
 const calculateOperator = async <Num, Op>(operator: Op, args: string[]) => {
@@ -36,7 +38,13 @@ export const calculateNaturalOperator = calculateOperator<
   NaturalNumber,
   NaturalOperator
 >;
+
 export const calculateIntegerOperator = calculateOperator<
   IntegerNumber,
   IntegerOperator
+>;
+
+export const calculateRationalOperator = calculateOperator<
+  RationalNumber,
+  RationalOperator
 >;

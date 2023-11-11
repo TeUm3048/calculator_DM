@@ -12,6 +12,7 @@ import Rational from "../Pages/old/Rational";
 import Polynum from "../Pages/old/Polynum";
 import NaturalCalculatePage from "../Pages/NaturalCalculatePage";
 import IntegerCalculatingPage from "../Pages/IntegerCalculatePage";
+import RationalCalculatePage from "../Pages/RationalCalculatePage";
 
 export default class Header extends Component {
   render() {
@@ -43,7 +44,7 @@ export default class Header extends Component {
           <Routes>
             <Route exact path="/" element={<NaturalCalculatePage />} />
             <Route exact path="/int" element={<IntegerCalculatingPage />} />
-            <Route exact path="/rat" element={<Rational />} />
+            <Route exact path="/rat" element={<RationalCalculatePage />} />
             <Route exact path="/poly" element={<Polynum />} />
             {/* <Route exact path="/test" element={<NaturalCalculatePage />} /> */}
           </Routes>

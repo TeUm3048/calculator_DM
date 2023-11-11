@@ -11,3 +11,11 @@ export {
 } from "./NaturalOperator";
 
 export type { NaturalNumber } from "./NaturalOperator";
+
+export {
+    RationalOperator,
+    rational_calculate_operators,
+  } from "./RationalOperator";
+  
+  export type { RationalNumber } from "./RationalOperator";
+  
