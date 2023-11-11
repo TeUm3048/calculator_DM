@@ -1,4 +1,4 @@
-import CalculatorModule from "../Components/CalculatorModule/CalculatorModule";
+import CalculatorModule from "../Components/CalculatorModule";
 import { calculateRationalOperator } from "../utils/calculateOperators";
 import { rational_calculate_operators } from "../utils/Operators";
 

@@ -1,5 +1,4 @@
-import React, { memo, useMemo } from "react";
-import styles from "./Test.module.css";
+import styles from "./CalculatorModule.module.css";
 import { FormEventHandler } from "react";
 
 interface Props<Op> {

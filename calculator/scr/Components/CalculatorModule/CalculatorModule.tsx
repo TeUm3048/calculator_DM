@@ -1,5 +1,5 @@
 import { FormEventHandler, useRef, useState } from "react";
-import styles from "./Test.module.css";
+import styles from "./CalculatorModule.module.css";
 import { CalcButton } from "./CalcButton";
 import { calculateOperatorFn } from "../../utils/calculateOperatorFn";
 
