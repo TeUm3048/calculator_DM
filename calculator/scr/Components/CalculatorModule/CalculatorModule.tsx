@@ -1,17 +1,24 @@
 import { FormEventHandler, useRef, useState } from "react";
-import { NaturalOperator, NaturalNumber } from "../utils/NaturalOperator";
-import calculateNaturalOperator from "../utils/calculateNaturalOperator";
-import { natural_calculate_operators } from "../Calculate";
 import styles from "./Test.module.css";
+import { CalcButton } from "./CalcButton";
+import { calculateOperatorFn } from "../../utils/calculateOperatorFn";
 
-const Test = () => {
+interface Props<Num, Op> {
+  calculateOperator: calculateOperatorFn<Num, Op>;
+  calculate_operators: { value: string; operator: Op }[];
+}
+
+const CalculatorModule = <Num extends { num: any }, Op>({
+  calculateOperator,
+  calculate_operators,
+}: Props<Num, Op>) => {
   const [num1, setNum1] = useState<string>();
   const [num2, setNum2] = useState<string>();
-  const [num3, setNum3] = useState<string>();
-  const [operator, setOperator] = useState<NaturalOperator>();
+  // const [num3, setNum3] = useState<string>();
+  const [operator, setOperator] = useState<Op>();
   const refInput1 = useRef<HTMLInputElement>(null);
   const refInput2 = useRef<HTMLInputElement>(null);
-  const refInput3 = useRef<HTMLInputElement>(null);
+  // const refInput3 = useRef<HTMLInputElement>(null);
 
   const handleSubmit: FormEventHandler = async (e) => {
     e.preventDefault();
@@ -29,18 +36,20 @@ const Test = () => {
     setNum2(refInput2.current.value);
     // setNum3(refInput3.current.value);
 
-    if (!num1 || !num2 || !operator) {
+    if (!operator) {
       return;
     }
 
-    calculateNaturalOperator(
-      operator,
-      num3 && num2 ? [num1, num2, num3] : num2 ? [num1, num2] : [num1]
-      // [num1, num2]
-    ).then((value) => {
+    const operator_args = [];
+    if (num1) operator_args.push(num1);
+    if (num2) operator_args.push(num2);
+    // if (num3) operator_args.push(num3);
+
+    calculateOperator(operator, operator_args).then((value) => {
       setNum1(value.num);
       setNum2("");
-      setNum3("");
+      // setNum3("");
+      setOperator(undefined);
     });
   };
 
@@ -68,22 +77,23 @@ const Test = () => {
         onChange={(e) => setNum3(e.currentTarget.value)}
       /> */}
       <div className={styles.btn_container}>
-        {natural_calculate_operators.map((el) => {
+        {calculate_operators.map((el) => {
           return (
-            <button
-              className={styles.btn}
-              onClick={(e) => {
-                setOperator(el.operator);
-              }}
+            <CalcButton
+              buttonOperator={el.operator}
+              currentOperator={operator}
+              setOperator={setOperator}
             >
               {el.value}
-            </button>
+            </CalcButton>
           );
         })}
-        <button onClick={handleSubmit}> = </button>
+        <button className={styles.btn} onClick={handleSubmit}>
+          =
+        </button>
       </div>
     </div>
   );
 };
 
-export default Test;
+export default CalculatorModule;
