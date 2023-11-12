@@ -8,11 +8,11 @@ import {
   Form,
 } from "react-bootstrap";
 import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
-import Natural from "../Pages/Natural";
-import Integer from "../Pages/Integer";
-import Rational from "../Pages/Rational";
-import Polynum from "../Pages/Polynum";
-import Test from "../Pages/Test";
+import Rational from "../Pages/old/Rational";
+import Polynum from "../Pages/old/Polynum";
+import NaturalCalculatePage from "../Pages/NaturalCalculatePage";
+import IntegerCalculatingPage from "../Pages/IntegerCalculatePage";
+import RationalCalculatePage from "../Pages/RationalCalculatePage";
 
 export default class Header extends Component {
   render() {
@@ -27,7 +27,7 @@ export default class Header extends Component {
                 <Nav.Link href="/int"> Integer</Nav.Link>
                 <Nav.Link href="/rat"> Rational</Nav.Link>
                 <Nav.Link href="/poly"> Polynom</Nav.Link>
-                <Nav.Link href="/test"> Test</Nav.Link>
+                {/* <Nav.Link href="/test"> Test</Nav.Link> */}
               </Nav>
               <Form inline>
                 <div style={{ display: "flex" }}>
@@ -42,11 +42,11 @@ export default class Header extends Component {
 
         <Router>
           <Routes>
-            <Route exact path="/" element={<Natural />} />
-            <Route exact path="/int" element={<Integer />} />
-            <Route exact path="/rat" element={<Rational />} />
+            <Route exact path="/" element={<NaturalCalculatePage />} />
+            <Route exact path="/int" element={<IntegerCalculatingPage />} />
+            <Route exact path="/rat" element={<RationalCalculatePage />} />
             <Route exact path="/poly" element={<Polynum />} />
-            <Route exact path="/test" element={<Test />} />
+            {/* <Route exact path="/test" element={<NaturalCalculatePage />} /> */}
           </Routes>
         </Router>
       </div>

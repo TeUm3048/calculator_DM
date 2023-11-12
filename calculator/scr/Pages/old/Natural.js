@@ -1,14 +1,17 @@
-import React, {Component} from 'react'
-import Calculate from '../Calculate'
-import styles from '../Pages/Calculate.module.css'
-import logo from '../foto.jpg'
-export default class Integer extends Component {
+import React, {Component, useState} from 'react'
+import { Container, Form } from 'react-bootstrap'
+import Calculate from '../../Calculate'
+import styles from './Calculate.module.css'
+import logo from './foto.jpg'
+export default class Natural extends Component {
     constructor(){
         super()
         this.state={
             out: '0'
         }
+        this.refoutput=React.createRef()
     }
+
     tapeNumber(value){
         let currentValue=value
         let output=this.refoutput.current
@@ -45,11 +48,11 @@ export default class Integer extends Component {
         
         return (
             <div >
-            <div className={styles.imageBox}>
+            <div class="imageBox">
                 <img src={logo} alt="Image1"style={{position: "absolute",height: "400px",width: "100%",top: "20%"}}/>
             </div>
             
-            <h1 style={{position: "absolute",top: "10%",left: "41%",fontSize: 45}}>Mode: Integer</h1>
+            <h1 style={{position: "absolute",top: "10%",left: "41%",fontSize: 45}}>Mode: Natural</h1>
 
             <div className={styles.container2}> 
                  <div>

@@ -12,7 +12,7 @@
 }
 
 .imageBox {
-    background: url('../foto.jpg');
+    background: url('./foto.jpg');
     margin-top: 20rem;
     width: 100%;
     height: 300px;
