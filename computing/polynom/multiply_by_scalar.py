@@ -8,5 +8,5 @@ from computing.rational.Rational import Rational
 def multiply_by_scalar(pol1: Polynom, scalar: Rational) -> Polynom:
     pol = pol1.copy()
     for i in range(len(pol)):
-        pol[i] = pol[i].multiply(scalar)
-    return Polynom(pol.data)
+        pol.data[i] = pol.data[i].multiply(scalar)
+    return pol
