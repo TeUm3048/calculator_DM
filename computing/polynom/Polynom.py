@@ -139,3 +139,7 @@ class Polynom:
     def multiply_by_scalar(self: Polynom, scalar: Rational) -> Polynom:
         from .multiply_by_scalar import multiply_by_scalar
         return multiply_by_scalar(self, scalar)
+
+    def multiply(self: Polynom, other: Polynom) -> Polynom:
+        from .multiply import multiply
+        return multiply(self, other)
