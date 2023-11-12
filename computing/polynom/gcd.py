@@ -2,8 +2,8 @@
 # Автор: Мавликаев_Иван_2381
 
 #НОД многочленов
-
 from .Polynom import Polynom
+
 
 def gcd(self: Polynom, other: Polynom)-> Polynom:
     pol1 = self.copy()
@@ -16,7 +16,7 @@ def gcd(self: Polynom, other: Polynom)-> Polynom:
             deg1 = pol1.get_degree()
         else:
             pol2 = pol2.mod(pol1)
-            deg2 = deg2.get_degree()
+            deg2 = pol2.get_degree()
     if deg1 == 0:
         return pol2
     return pol1

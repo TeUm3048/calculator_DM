@@ -1,7 +1,7 @@
 import React, {Component} from 'react'
-import Calculate from '../Calculate'
-import styles from '../Pages/Calculate.module.css'
-import logo from '../foto.jpg'
+import Calculate from '../../Calculate'
+import styles from './Calculate.module.css'
+import logo from './foto.jpg'
 export default class Rational extends Component {
     constructor(){
         super()
