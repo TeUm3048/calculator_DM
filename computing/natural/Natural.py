@@ -10,7 +10,8 @@ class Natural:
     def __init__(self, value: str) -> None:
         self.data = []
         for digit in value:
-            self.data = [int(digit)] + self.data
+            self.data.append(int(digit))
+        self.reverse()
         while len(self.data) > 1 and self.data[-1] == 0:
             self.data.pop()
 
