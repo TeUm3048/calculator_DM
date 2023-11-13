@@ -7,10 +7,15 @@ Digit = Literal[1, 2, 3, 4, 5, 6, 7, 8, 9, 0]
 class Natural:
     data: list[Digit]
 
-    def __init__(self, value: str) -> None:
-        self.data = []
-        for digit in value:
-            self.data = [int(digit)] + self.data
+    def __init__(self, value: str | Natural) -> None:
+        if isinstance(value, Natural):
+            self.data = value.data.copy()
+            return
+
+        self.data = [0] * len(value)
+        for digit_index in range(len(value)):
+            self.data[digit_index] = int(value[digit_index])
+        self.data.reverse()
         while len(self.data) > 1 and self.data[-1] == 0:
             self.data.pop()
 
@@ -64,7 +69,7 @@ class Natural:
 
     def copy(self):
         """ Return a copy of B. """
-        return Natural(str(self))
+        return Natural(self)
 
     def comparator(self, other: Natural) -> Literal[-1, 0, 1]:
         """
