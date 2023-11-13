@@ -8,9 +8,9 @@ class Natural:
     data: list[Digit]
 
     def __init__(self, value: str) -> None:
-        self.data = []
-        for digit in value:
-            self.data.append(int(digit))
+        self.data = [0]*len(value)
+        for digit_index in range(len(value)):
+            self.data[digit_index] = int(value[digit_index])
         self.data.reverse()
         while len(self.data) > 1 and self.data[-1] == 0:
             self.data.pop()
