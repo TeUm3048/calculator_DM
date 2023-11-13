@@ -23,6 +23,9 @@ urlpatterns = [
     path("rat", views.index),
     path("poly", views.index),
     path("test", views.index),
-    path("api/", views.NaturalOperatorView.as_view()),
+    path("api/natural", views.NaturalOperatorView.as_view()),
+    path("api/integer", views.IntegerOperatorView.as_view()),
+    path("api/rational", views.RationalOperatorView.as_view()),
+    path("api/polynom", views.PolynomOperatorView.as_view()),
     path('admin/', admin.site.urls),
 ]
