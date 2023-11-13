@@ -318,18 +318,18 @@ class PolynomOperatorView(APIView):
                 res = a.subtract(b)
             case 'polynom_multiply_by_scalar':
                 a = Polynom(list(map(Rational, serialized_args[0].data["num"])))
-                b = Rational(list(map(Rational, serialized_args[0].data["num"]))[0])
+                b = list(map(Rational, serialized_args[1].data["num"]))[0]
                 res = a.multiply_by_scalar(b)
             case 'polynom_multiply_by_monomial':
                 a = Polynom(list(map(Rational, serialized_args[0].data["num"])))
-                b = Rational(list(map(Rational, serialized_args[0].data["num"]))[0])
+                b = Natural(serialized_args[1].data["num"][0])
                 res = a.multiply_by_monomial(b)
             case 'polynom_get_leading_coefficient':
                 a = Polynom(list(map(Rational, serialized_args[0].data["num"])))
-                res = a.get_leading_coefficient()
+                res = Polynom([a.get_leading_coefficient()])
             case 'polynom_get_degree':
                 a = Polynom(list(map(Rational, serialized_args[0].data["num"])))
-                res = a.get_degree()
+                res = Polynom([Rational(str(a.get_degree()))])
             case 'polynom_factor_polynomial_coefficients':
                 a = Polynom(list(map(Rational, serialized_args[0].data["num"])))
                 res = a.factor_polynomial_coefficients()
