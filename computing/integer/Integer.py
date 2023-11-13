@@ -15,7 +15,7 @@ class Integer:
             self.number = value
             self.sign = 1
             return
-        if value[0] == '0':
+        if value[0] == '0' or (len(value) >= 2 and value[0] == '-' and value[1] == '0'):
             self.number = Natural('0')
             self.sign = 0
         elif value[0] == '-':

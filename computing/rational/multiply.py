@@ -8,4 +8,4 @@ def multiply(self: Rational, other: Rational) -> Rational:
     num1 = self.copy()
     num2 = other.copy()
     return Rational([num1.numerator.multiply(num2.numerator),
-                     num1.denominator.multiply(num2.denominator)])
+                     num1.denominator.multiply(num2.denominator)]).simplify()
