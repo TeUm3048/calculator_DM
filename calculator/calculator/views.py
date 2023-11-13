@@ -309,51 +309,51 @@ class PolynomOperatorView(APIView):
         res = Polynom("0")
         match operator:
             case 'polynom_add':
-                a = Polynom(serialized_args[0].data["num"])
-                b = Polynom(serialized_args[1].data["num"])
+                a = Polynom(list(map(Rational, serialized_args[0].data["num"])))
+                b = Polynom(list(map(Rational, serialized_args[1].data["num"])))
                 res = a.add(b)
             case 'polynom_subtract':
-                a = Polynom(serialized_args[0].data["num"])
-                b = Polynom(serialized_args[1].data["num"])
+                a = Polynom(list(map(Rational, serialized_args[0].data["num"])))
+                b = Polynom(list(map(Rational, serialized_args[1].data["num"])))
                 res = a.subtract(b)
             case 'polynom_multiply_by_scalar':
-                a = Polynom(serialized_args[0].data["num"])
-                b = Rational(serialized_args[0].data["num"][0])
+                a = Polynom(list(map(Rational, serialized_args[0].data["num"])))
+                b = Rational(list(map(Rational, serialized_args[0].data["num"]))[0])
                 res = a.multiply_by_scalar(b)
             case 'polynom_multiply_by_monomial':
-                a = Polynom(serialized_args[0].data["num"])
-                b = Rational(serialized_args[0].data["num"][0])
+                a = Polynom(list(map(Rational, serialized_args[0].data["num"])))
+                b = Rational(list(map(Rational, serialized_args[0].data["num"]))[0])
                 res = a.multiply_by_monomial(b)
             case 'polynom_get_leading_coefficient':
-                a = Polynom(serialized_args[0].data["num"])
+                a = Polynom(list(map(Rational, serialized_args[0].data["num"])))
                 res = a.get_leading_coefficient()
             case 'polynom_get_degree':
-                a = Polynom(serialized_args[0].data["num"])
+                a = Polynom(list(map(Rational, serialized_args[0].data["num"])))
                 res = a.get_degree()
             case 'polynom_factor_polynomial_coefficients':
-                a = Polynom(serialized_args[0].data["num"])
+                a = Polynom(list(map(Rational, serialized_args[0].data["num"])))
                 res = a.factor_polynomial_coefficients()
             case 'polynom_multiply':
-                a = Polynom(serialized_args[0].data["num"])
-                b = Polynom(serialized_args[1].data["num"])
+                a = Polynom(list(map(Rational, serialized_args[0].data["num"])))
+                b = Polynom(list(map(Rational, serialized_args[1].data["num"])))
                 res = a.multiply(b)
             case 'polynom_div':
-                a = Polynom(serialized_args[0].data["num"])
-                b = Polynom(serialized_args[1].data["num"])
+                a = Polynom(list(map(Rational, serialized_args[0].data["num"])))
+                b = Polynom(list(map(Rational, serialized_args[1].data["num"])))
                 res = a.add(b)
             case 'polynom_mod':
-                a = Polynom(serialized_args[0].data["num"])
-                b = Polynom(serialized_args[1].data["num"])
+                a = Polynom(list(map(Rational, serialized_args[0].data["num"])))
+                b = Polynom(list(map(Rational, serialized_args[1].data["num"])))
                 res = a.add(b)
             case 'polynom_gcd':
-                a = Polynom(serialized_args[0].data["num"])
-                b = Polynom(serialized_args[1].data["num"])
+                a = Polynom(list(map(Rational, serialized_args[0].data["num"])))
+                b = Polynom(list(map(Rational, serialized_args[1].data["num"])))
                 res = a.add(b)
             case 'polynom_derive':
-                a = Polynom(serialized_args[0].data["num"])
+                a = Polynom(list(map(Rational, serialized_args[0].data["num"])))
                 res = a.derive()
             case 'polynom_eliminating_duplicate_roots':
-                a = Polynom(serialized_args[0].data["num"])
+                a = Polynom(list(map(Rational, serialized_args[0].data["num"])))
                 res = a.eliminating_duplicate_roots()
             case _:
                 return Response(f'No such operator: "{operator}"', status=404)

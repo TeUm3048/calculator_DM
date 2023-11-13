@@ -51,7 +51,8 @@ class Rational:
         return f"Rational({self})"
 
     def is_integer(self: Rational):
-        return self.denominator == Natural('1')
+        tmp = self.simplify()
+        return tmp.denominator == Natural('1')
 
     @staticmethod
     def from_integer(int: Integer):

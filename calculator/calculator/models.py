@@ -24,4 +24,4 @@ class RationalModel:
 class PolynomModel:
     def __init__(self, num: Polynom):
         self.type = "polynom"
-        self.num = num
+        self.num = list(map(str, num.data))

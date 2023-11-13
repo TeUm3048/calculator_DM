@@ -10,14 +10,18 @@ import {
   PolynomNumber,
 } from "./Operators";
 
-const calculateOperator = async <Num, Op>(operator: Op, args: Num[]) => {
+const calculateOperator = async <Num, Op>(
+  operator: Op,
+  args: Num[],
+  apiPath: string
+) => {
   const body = {
     operator: operator,
     args: args,
   };
 
   return axios
-    .post<Num>("/api/", body, {
+    .post<Num>(apiPath, body, {
       headers: {
         "Content-Type": "application/json",
       },
@@ -34,23 +38,26 @@ const calculateOperator = async <Num, Op>(operator: Op, args: Num[]) => {
     });
 };
 
-export type calculateOperatorFn<Num, Op> = typeof calculateOperator<Num, Op>;
+export type calculateOperatorFn<Num, Op> = (
+  operator: Op,
+  args: Num[]
+) => Promise<Num>;
 
-export const calculateNaturalOperator = calculateOperator<
-  NaturalNumber,
-  NaturalOperator
->;
+export const calculateNaturalOperator = (
+  operator: NaturalOperator,
+  args: NaturalNumber[]
+) => calculateOperator(operator, args, "api/natural");
 
-export const calculateIntegerOperator = calculateOperator<
-  IntegerNumber,
-  IntegerOperator
->;
+export const calculateIntegerOperator = (
+  operator: IntegerOperator,
+  args: IntegerNumber[]
+) => calculateOperator(operator, args, "api/integer");
 
-export const calculateRationalOperator = calculateOperator<
-  RationalNumber,
-  RationalOperator
->;
-export const calculatePolynomOperator = calculateOperator<
-  PolynomNumber,
-  PolynomOperator
->;
+export const calculateRationalOperator = (
+  operator: RationalOperator,
+  args: RationalNumber[]
+) => calculateOperator(operator, args, "api/rational");
+export const calculatePolynomOperator = (
+  operator: PolynomOperator,
+  args: PolynomNumber[]
+) => calculateOperator(operator, args, "api/polynom");
