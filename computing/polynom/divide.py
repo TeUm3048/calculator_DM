@@ -15,14 +15,9 @@ def divide(self: Polynom, other: Polynom) -> Polynom:
     b = other.copy()
     result = Polynom([Rational("0")])
 
-    DELETE_THIS = 0
     while a.degree() >= b.degree() and not a.is_null():
         coefficient = a[-1] / b[-1]
         result = result.add(Polynom([coefficient]).multiply_by_monomial(a.degree() - b.degree()))
         a = a.subtract(b.multiply_by_monomial(a.degree() - b.degree()).multiply_by_scalar(coefficient))
 
-        DELETE_THIS += 1
-        if DELETE_THIS > 20:
-            raise RuntimeError(f"что-то пошло не так {str(self)}, {str(other)}")
-    
     return result
