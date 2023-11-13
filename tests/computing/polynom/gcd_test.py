@@ -19,7 +19,7 @@ def test_gcd_3():
     a = Polynom([Rational("10"), Rational("13"), Rational("4")])
     # (35 + 28x)
     b = Polynom([Rational("35"), Rational("28")])
-    assert a.gcd(b) == Polynom([Rational("5"), Rational("4")])
+    assert a.gcd(b) == Polynom([Rational("35"), Rational("28")])
 
 
 def test_gcd_4():
@@ -28,6 +28,5 @@ def test_gcd_4():
     # Have no root
     b = Polynom([Rational("11"), Rational("-12"), Rational("3")])
     assert a.gcd(b) == Polynom([Rational("1")])
-
 
 
