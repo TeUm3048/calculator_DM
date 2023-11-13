@@ -7,6 +7,9 @@ const IntegerCalculatingPage = () => {
     <CalculatorModule
       calculateOperator={calculateIntegerOperator}
       calculate_operators={integer_calculate_operators}
+      parseStringToNum={(s) => {
+        return { num: s };
+      }}
     ></CalculatorModule>
   );
 };

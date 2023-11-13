@@ -8,11 +8,10 @@ import {
   Form,
 } from "react-bootstrap";
 import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
-import Rational from "../Pages/old/Rational";
-import Polynum from "../Pages/old/Polynum";
 import NaturalCalculatePage from "../Pages/NaturalCalculatePage";
 import IntegerCalculatingPage from "../Pages/IntegerCalculatePage";
 import RationalCalculatePage from "../Pages/RationalCalculatePage";
+import PolynomCalculatePage from "../Pages/PolynomCalculatePage";
 
 export default class Header extends Component {
   render() {
@@ -45,7 +44,7 @@ export default class Header extends Component {
             <Route exact path="/" element={<NaturalCalculatePage />} />
             <Route exact path="/int" element={<IntegerCalculatingPage />} />
             <Route exact path="/rat" element={<RationalCalculatePage />} />
-            <Route exact path="/poly" element={<Polynum />} />
+            <Route exact path="/poly" element={<PolynomCalculatePage />} />
             {/* <Route exact path="/test" element={<NaturalCalculatePage />} /> */}
           </Routes>
         </Router>

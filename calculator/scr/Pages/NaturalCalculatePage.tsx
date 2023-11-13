@@ -7,6 +7,9 @@ const NaturalCalculatePage = () => {
     <CalculatorModule
       calculateOperator={calculateNaturalOperator}
       calculate_operators={natural_calculate_operators}
+      parseStringToNum={(s) => {
+        return { num: s };
+      }}
     ></CalculatorModule>
   );
 };

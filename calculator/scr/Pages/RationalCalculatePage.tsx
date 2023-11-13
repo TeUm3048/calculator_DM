@@ -7,6 +7,9 @@ const RationalCalculatingPage = () => {
     <CalculatorModule
       calculateOperator={calculateRationalOperator}
       calculate_operators={rational_calculate_operators}
+      parseStringToNum={(s) => {
+        return { num: s };
+      }}
     ></CalculatorModule>
   );
 };

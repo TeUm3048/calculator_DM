@@ -1,16 +1,18 @@
 import { FormEventHandler, useRef, useState } from "react";
 import styles from "./CalculatorModule.module.css";
 import { CalcButton } from "./CalcButton";
-import { calculateOperatorFn } from "../../utils/calculateOperatorFn";
+import { calculateOperatorFn } from "../../utils/calculateOperators";
 
 interface Props<Num, Op> {
   calculateOperator: calculateOperatorFn<Num, Op>;
   calculate_operators: { value: string; operator: Op }[];
+  parseStringToNum: (s: string) => Num;
 }
 
 const CalculatorModule = <Num extends { num: any }, Op>({
   calculateOperator,
   calculate_operators,
+  parseStringToNum,
 }: Props<Num, Op>) => {
   const [num1, setNum1] = useState<string>();
   const [num2, setNum2] = useState<string>();
@@ -45,12 +47,14 @@ const CalculatorModule = <Num extends { num: any }, Op>({
     if (num2) operator_args.push(num2);
     // if (num3) operator_args.push(num3);
 
-    calculateOperator(operator, operator_args).then((value) => {
-      setNum1(value.num);
-      setNum2("");
-      // setNum3("");
-      setOperator(undefined);
-    });
+    calculateOperator(operator, operator_args.map(parseStringToNum)).then(
+      (value) => {
+        setNum1(value.num);
+        setNum2("");
+        // setNum3("");
+        setOperator(undefined);
+      }
+    );
   };
 
   return (
