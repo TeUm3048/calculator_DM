@@ -1,14 +1,17 @@
 from django.shortcuts import render
-
-from rest_framework.response import Response
-from rest_framework.views import APIView
 from rest_framework.parsers import JSONParser
 from rest_framework.request import Request
+from rest_framework.response import Response
+from rest_framework.views import APIView
 
-from computing.natural.Natural import Natural
 from computing.integer.Integer import Integer
-from .serializers import NaturalSerializer, IntegerSerializer
-from .models import NaturalModel, IntegerModel
+from computing.natural.Natural import Natural
+from computing.rational.Rational import Rational
+from computing.polynom.Polynom import Polynom
+
+from .models import IntegerModel, NaturalModel, RationalModel, PolynomModel
+from .serializers import (IntegerSerializer, NaturalSerializer,
+                          RationalSerializer, PolynomSerializer)
 
 
 def index(request):
@@ -193,5 +196,168 @@ class IntegerOperatorView(APIView):
                 return Response(f'No such operator: "{operator}"', status=404)
 
         res_ser = IntegerSerializer(IntegerModel(res))
+
+        return Response(res_ser.data)
+
+
+class RationalOperatorView(APIView):
+    parser_classes = [JSONParser]
+
+    def get(self, request: Request):
+        operators = ["mod_operator"]
+        example = {
+            "operator": "integer_mod",
+            "args": [
+                {
+                    "num": "6"
+                },
+                {
+                    "num": "4"
+                }
+            ]
+        }
+        result = {
+            "num": "2"
+        }
+        data = {"operators": operators, "POST": example, "result": result}
+
+        return Response(data)
+
+    def post(self, request: Request):
+        try:
+            operator = request.data['operator']
+            args = request.data['args']
+            serialized_args = list(map(lambda x: RationalSerializer(data=x), args))
+        except Exception:
+            return Response({"Error": "Invalid value", "request": request.data}, status=500)
+        for a_ser in serialized_args:
+            if not (a_ser.is_valid()):
+                return Response({"Error": "Invalid value", "args": args}, status=500)
+
+        res = Rational("0")
+        match operator:
+            case 'rational_simplify':
+                a = Rational(serialized_args[0].data["num"])
+                res = a.simplify()
+            case 'rational_is_integer':
+                a = Rational(serialized_args[0].data["num"])
+                res = a.is_integer()
+            case 'rational_from_integer':
+                a = Integer(serialized_args[0].data["num"])
+                res = Rational.from_integer(a)
+            case 'rational_to_integer':
+                a = Rational(serialized_args[0].data["num"])
+                res = a.to_integer()
+            case 'rational_add':
+                a = Rational(serialized_args[0].data["num"])
+                b = Rational(serialized_args[1].data["num"])
+                res = a.add(b)
+            case 'rational_subtract':
+                a = Rational(serialized_args[0].data["num"])
+                b = Rational(serialized_args[1].data["num"])
+                res = a.subtract(b)
+            case 'rational_multiply':
+                a = Rational(serialized_args[0].data["num"])
+                b = Rational(serialized_args[1].data["num"])
+                res = a.multiply(b)
+            case 'rational_divide':
+                a = Rational(serialized_args[0].data["num"])
+                b = Rational(serialized_args[1].data["num"])
+                res = a.divide(b)
+            case _:
+                return Response(f'No such operator: "{operator}"', status=404)
+
+        res_ser = RationalSerializer(RationalModel(res))
+
+        return Response(res_ser.data)
+
+
+class PolynomOperatorView(APIView):
+    parser_classes = [JSONParser]
+
+    def get(self, request: Request):
+        operators = ["mod_operator"]
+        example = {
+            "operator": "integer_mod",
+            "args": [
+                {
+                    "num": "6"
+                },
+                {
+                    "num": "4"
+                }
+            ]
+        }
+        result = {
+            "num": "2"
+        }
+        data = {"operators": operators, "POST": example, "result": result}
+
+        return Response(data)
+
+    def post(self, request: Request):
+        try:
+            operator = request.data['operator']
+            args = request.data['args']
+            serialized_args = list(map(lambda x: PolynomSerializer(data=x), args))
+        except Exception:
+            return Response({"Error": "Invalid value", "request": request.data}, status=500)
+        for a_ser in serialized_args:
+            if not (a_ser.is_valid()):
+                return Response({"Error": "Invalid value", "args": args}, status=500)
+
+        res = Polynom("0")
+        match operator:
+            case 'polynom_add':
+                a = Polynom(serialized_args[0].data["num"])
+                b = Polynom(serialized_args[1].data["num"])
+                res = a.add(b)
+            case 'polynom_subtract':
+                a = Polynom(serialized_args[0].data["num"])
+                b = Polynom(serialized_args[1].data["num"])
+                res = a.subtract(b)
+            case 'polynom_multiply_by_scalar':
+                a = Polynom(serialized_args[0].data["num"])
+                b = Rational(serialized_args[0].data["num"][0])
+                res = a.multiply_by_scalar(b)
+            case 'polynom_multiply_by_monomial':
+                a = Polynom(serialized_args[0].data["num"])
+                b = Rational(serialized_args[0].data["num"][0])
+                res = a.multiply_by_monomial(b)
+            case 'polynom_get_leading_coefficient':
+                a = Polynom(serialized_args[0].data["num"])
+                res = a.get_leading_coefficient()
+            case 'polynom_get_degree':
+                a = Polynom(serialized_args[0].data["num"])
+                res = a.get_degree()
+            case 'polynom_factor_polynomial_coefficients':
+                a = Polynom(serialized_args[0].data["num"])
+                res = a.factor_polynomial_coefficients()
+            case 'polynom_multiply':
+                a = Polynom(serialized_args[0].data["num"])
+                b = Polynom(serialized_args[1].data["num"])
+                res = a.multiply(b)
+            case 'polynom_div':
+                a = Polynom(serialized_args[0].data["num"])
+                b = Polynom(serialized_args[1].data["num"])
+                res = a.add(b)
+            case 'polynom_mod':
+                a = Polynom(serialized_args[0].data["num"])
+                b = Polynom(serialized_args[1].data["num"])
+                res = a.add(b)
+            case 'polynom_gcd':
+                a = Polynom(serialized_args[0].data["num"])
+                b = Polynom(serialized_args[1].data["num"])
+                res = a.add(b)
+            case 'polynom_derive':
+                a = Polynom(serialized_args[0].data["num"])
+                res = a.derive()
+            case 'polynom_eliminating_duplicate_roots':
+                a = Polynom(serialized_args[0].data["num"])
+                res = a.eliminating_duplicate_roots()
+            case _:
+                return Response(f'No such operator: "{operator}"', status=404)
+
+        res_ser = PolynomSerializer(PolynomModel(res))
 
         return Response(res_ser.data)
