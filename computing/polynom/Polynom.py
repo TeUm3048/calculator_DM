@@ -97,9 +97,11 @@ class Polynom:
          f(x) = (x-1) * (x-2)^2 * (x-3)^3,
          Then result equals (x-1) * (x-2) * (x-3)
         """
+        if self.get_degree() <= 1:
+            return self.copy()
         f_der = self.derive()
         d = self.gcd(f_der)
-        return self.divide(d)
+        return self.divide(d).factor_polynomial_coefficients()
 
     def multiply_by_monomial(self: Polynom, k: int | Natural) -> Polynom:
         from .multiply_by_monomial import multiply_by_monomial
