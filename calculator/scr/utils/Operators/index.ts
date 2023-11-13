@@ -13,9 +13,15 @@ export {
 export type { NaturalNumber } from "./NaturalOperator";
 
 export {
-    RationalOperator,
-    rational_calculate_operators,
-  } from "./RationalOperator";
-  
-  export type { RationalNumber } from "./RationalOperator";
-  
+  RationalOperator,
+  rational_calculate_operators,
+} from "./RationalOperator";
+
+export type { RationalNumber } from "./RationalOperator";
+
+export {
+  PolynomOperator,
+  polynom_calculate_operators,
+} from "./PolynomOperator";
+
+export type { PolynomNumber } from "./PolynomOperator";
