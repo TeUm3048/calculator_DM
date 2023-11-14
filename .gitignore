@@ -1,5 +1,5 @@
 calculator/static/**/main.js
-
+.env.prod
 # Python
 
 # Byte-compiled / optimized / DLL files
