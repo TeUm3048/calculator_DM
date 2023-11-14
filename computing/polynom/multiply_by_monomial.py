@@ -15,11 +15,11 @@ def multiply_by_monomial(self: Polynom, k: "int | Natural") -> Polynom:
         result = self.copy()
         result.data = [Rational("0") for i in range(k)] + result.data
         return result
-    
-    result = Polynom.copy()
+
+    result = self.copy()
     power = k.copy()
-    one = Rational("1")
+    one = Natural("1")
     while power.is_not_zero():
         result.data = [Rational("0")] + result.data
-        power.subtract(one)
+        power = power.subtract(one)
     return result
