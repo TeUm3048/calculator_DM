@@ -60,7 +60,7 @@ class NaturalOperatorView(APIView):
                 res = a.compare(b)
             case 'natural_is_not_zero':
                 a = Natural(serialized_args[0].data["num"])
-                res = a.is_not_zero(b)
+                res = a.is_not_zero()
             case 'natural_add':
                 a = Natural(serialized_args[0].data["num"])
                 b = Natural(serialized_args[1].data["num"])
