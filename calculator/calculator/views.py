@@ -305,7 +305,11 @@ class PolynomOperatorView(APIView):
         for a_ser in serialized_args:
             if not (a_ser.is_valid()):
                 return Response({"Error": "Invalid value", "args": args}, status=500)
-
+        while '' in serialized_args[0].data["num"]:
+            serialized_args[0].data["num"].pop(serialized_args[0].data["num"].index(''))
+        if len(serialized_args) > 1:
+            while '' in serialized_args[1].data["num"]:
+                serialized_args[1].data["num"].pop(serialized_args[1].data["num"].index(''))
         res = Polynom("0")
         match operator:
             case 'polynom_add':
