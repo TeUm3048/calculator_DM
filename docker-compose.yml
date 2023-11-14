@@ -1,0 +1,14 @@
+version: '3'
+
+services:
+  app:
+    image: calculator:0.0.1
+    env_file:
+      - ./.env
+    build: .
+    command: python calculator/manage.py runserver 0.0.0.0:8000
+    volumes:
+      - ./app/:/usr/src/app/
+    ports:
+      - '8000:8000'
+
