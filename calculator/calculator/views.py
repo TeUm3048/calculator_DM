@@ -310,7 +310,7 @@ class PolynomOperatorView(APIView):
         if len(serialized_args) > 1:
             while '' in serialized_args[1].data["num"]:
                 serialized_args[1].data["num"].pop(serialized_args[1].data["num"].index(''))
-        res = Polynom("0")
+        res = Polynom([])
         match operator:
             case 'polynom_add':
                 a = Polynom(list(map(Rational, serialized_args[0].data["num"])))
@@ -344,7 +344,7 @@ class PolynomOperatorView(APIView):
             case 'polynom_div':
                 a = Polynom(list(map(Rational, serialized_args[0].data["num"])))
                 b = Polynom(list(map(Rational, serialized_args[1].data["num"])))
-                res = a.div(b)
+                res = a.divide(b)
             case 'polynom_mod':
                 a = Polynom(list(map(Rational, serialized_args[0].data["num"])))
                 b = Polynom(list(map(Rational, serialized_args[1].data["num"])))
