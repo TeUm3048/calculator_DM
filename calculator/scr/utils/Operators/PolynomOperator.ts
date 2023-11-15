@@ -21,7 +21,7 @@ export const polynom_calculate_operators: {
   { value: "+", operator: PolynomOperator.polynom_add },
   { value: "-", operator: PolynomOperator.polynom_subtract },
   { value: "*k", operator: PolynomOperator.polynom_multiply_by_scalar },
-  { value: "*x^3", operator: PolynomOperator.polynom_multiply_by_monomial },
+  { value: "*x^k", operator: PolynomOperator.polynom_multiply_by_monomial },
   { value: "lead", operator: PolynomOperator.polynom_get_leading_coefficient },
   { value: "deg", operator: PolynomOperator.polynom_get_degree },
   {
