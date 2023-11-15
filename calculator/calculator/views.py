@@ -344,15 +344,15 @@ class PolynomOperatorView(APIView):
             case 'polynom_div':
                 a = Polynom(list(map(Rational, serialized_args[0].data["num"])))
                 b = Polynom(list(map(Rational, serialized_args[1].data["num"])))
-                res = a.add(b)
+                res = a.div(b)
             case 'polynom_mod':
                 a = Polynom(list(map(Rational, serialized_args[0].data["num"])))
                 b = Polynom(list(map(Rational, serialized_args[1].data["num"])))
-                res = a.add(b)
+                res = a.mod(b)
             case 'polynom_gcd':
                 a = Polynom(list(map(Rational, serialized_args[0].data["num"])))
                 b = Polynom(list(map(Rational, serialized_args[1].data["num"])))
-                res = a.add(b)
+                res = a.gcd(b)
             case 'polynom_derive':
                 a = Polynom(list(map(Rational, serialized_args[0].data["num"])))
                 res = a.derive()
