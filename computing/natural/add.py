@@ -3,6 +3,7 @@
 
 from .Natural import Natural
 
+
 # Сложение двух натуральных чисел
 def add (num1: Natural, num2: Natural) -> Natural:
     # в increased сохраняем копию числа с наибольшей длиной,
@@ -22,13 +23,17 @@ def add (num1: Natural, num2: Natural) -> Natural:
         
         # осуществляем перенос на следующий разряд в случае переполнения
         if increased.data[i] > 9:
+            # Вычитаем из результата сложения 10
             increased.data[i] -= 10
+
             
             # создаём разряд при необходимости
             if i + 1 < len(increased):
                 increased.data[i + 1] += 1
+            # Иначе добавляем к массиву числа новый элемент - единицу
             else:
                 increased.data.append(1)
 
+    # Возвращаем результат сложения - новое натуральное число
     return increased
 
