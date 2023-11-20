@@ -10,5 +10,5 @@
     "esModuleInterop": true,
     "forceConsistentCasingInFileNames": true
   },
-  "include": ["./calculator/scr"]
+  "include": ["./calculator/scr", "./declaration.d.ts"]
 }

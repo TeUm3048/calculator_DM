@@ -64,6 +64,7 @@ class Polynom:
     # Функция нахождения степени полинома
     def degree(self) -> int:
         # Вызов функции нахождения степени полинома
+
         return self.get_degree()
 
     def is_null(self) -> bool:

@@ -1,0 +1,28 @@
+.wrapper {
+  margin: 0 auto;
+  max-width: 300px;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.input {
+  display: block;
+}
+
+.btn_container {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  gap: 10px;
+}
+.btn {
+  display: block;
+  background-color: transparent;
+  border: 1px solid #0c0c0c;
+  border-radius: 3px;
+  transition: background-color 0.3s;
+}
+.btn.active {
+  background-color: #cfcfcf;
+}

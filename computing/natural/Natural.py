@@ -1,46 +1,80 @@
 from __future__ import annotations
 from typing import Literal
 
+# Объявление Digit (исключительно для аннотаций)
 Digit = Literal[1, 2, 3, 4, 5, 6, 7, 8, 9, 0]
 
-
+# Класс Natural
+# Имеет единственное и главное поле - массив цифр (little-endian)
 class Natural:
     data: list[Digit]
 
-    def __init__(self, value: str) -> None:
-        self.data = []
-        for digit in value:
-            self.data = [int(digit)] + self.data
+    # Инициализация из строки и другого объекта Natural
+    def __init__(self, value: str | Natural) -> None:
+        
+        # Дублирование в случае, если на вход подан Natural
+        if isinstance(value, Natural):
+            self.data = value.data.copy()
+            return
+
+        # Создание массива цифр и заполнение из строки
+        self.data = [0] * len(value)
+        for digit_index in range(len(value)):
+            self.data[digit_index] = int(value[digit_index])
+        
+        # Разворот массива цифр (little-endian)
+        self.data.reverse()
+
+        # Удаление ведущих нулей
         while len(self.data) > 1 and self.data[-1] == 0:
             self.data.pop()
 
+    # Длина числа
     def __len__(self):
         """ Return len(self). """
         return len(self.data)
 
+    # Преобразование в стандартный int
     def __int__(self):
         """ Return int(self). """
+
+        # Объединение массива цифр в строку, разворот и вызов int(str)
         return int(''.join(list(map(str, self.data)))[::-1])
 
+    # Сравнение "меньше" через стандартный оператор "<"
     def __lt__(self, other: Natural) -> bool:
         """ Return self>value. """
+
+        # Сравнение по длине (число, которое длиннее, явно больше)
         if len(self) > len(other):
             return False
         if len(self) < len(other):
             return True
+        
+        # Поразрядное сравнение в случае равенства длин
         i = len(self) - 1
         while i >= 0 and self.data[i] == other.data[i]:
             i -= 1
+        
+        # Если все цифры равны, то числа тоже равны
         if i == -1:
             return False
+        
         return self.data[i] < other.data[i]
 
+    # Проверка на равенство 
     def __eq__(self, other: Natural) -> bool:
         """ Return self==value. """
+        
+        # Число равно самому себе
         if self is other:
             return True
+        
+        # Числа разной длины не равны
         if len(self) != len(other):
             return False
+        
+        # Поразрядное сравнение
         for i in range(len(self)):
             if self.data[i] != other.data[i]:
                 return False
@@ -62,11 +96,12 @@ class Natural:
         """ Return self>value. """
         return not (self < other)
 
+    # Копирование числа, вызывает конструктор
     def copy(self):
         """ Return a copy of B. """
-        return Natural(str(self))
+        return Natural(self)
 
-    def comparator(self, other: Natural) -> Literal[-1, 0, 1]:
+    def compare(self, other: Natural) -> Literal[0, 1, 2]:
         """
         Comparison of natural numbers
 
@@ -74,33 +109,18 @@ class Natural:
             0 if self == other,
             and -1 self < other.
         """
-        if self < other:
-            return -1
-        if self > other:
-            return 1
-        return 0
+        from .compare import compare
+        return compare(self, other)
 
-    def compare(self, other: Natural) -> Literal[0, 1, 2]:
-        """
-        Comparison of natural numbers
-
-        Return 2 if self > other,
-            0 if self == other,
-            and 1 self < other.
-        """
-        if self > other:
-            return 2
-        if self < other:
-            return 1
-        return 0
-
+    # Приведение числа к логическому типу (для конструкций "if natural")
     def __bool__(self):
         """True if self != 0. Called for bool(self)."""
         return self.is_not_zero()
 
     def is_not_zero(self) -> bool:
         """ Return True if self != 0, False otherwise. """
-        return not (len(self) == 1 and self.data[0] == 0)
+        from .is_not_zero import is_not_zero
+        return is_not_zero(self)
 
     def increment(self) -> None:
         """ Add 1 to self """
@@ -196,10 +216,12 @@ class Natural:
         from .lcm import lcm
         return lcm(self, other)
 
+    # Приведение к строке, через соединение цифр числа и разворот
     def __str__(self):
         """ Return str(self). """
         return "".join(str(digit) for digit in self.data[::-1])
 
+    # Функция для вывода через print
     def __repr__(self):
         """ Return repr(self). """
         return f"Natural({self})"
