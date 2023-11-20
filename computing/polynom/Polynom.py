@@ -61,7 +61,10 @@ class Polynom:
     def __setitem__(self, index: int, value: Rational) -> None:
         self.data[index] = value
 
+    # Функция нахождения степени полинома
     def degree(self) -> int:
+        # Вызов функции нахождения степени полинома
+
         return self.get_degree()
 
     def is_null(self) -> bool:
@@ -111,6 +114,7 @@ class Polynom:
         from .get_degree import get_degree
         return get_degree(self)
 
+    # Вызов функции получающей старший коэффициент полинома.
     def get_leading_coefficient(self):
         from .get_leading_coefficient import get_leading_coefficient
         return get_leading_coefficient(self)
