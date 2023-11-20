@@ -12,16 +12,20 @@ class Integer:
 
     def __init__(self, value: str | Natural) -> None:
         """ Make an Integer. """
+        # Если тип значения Natural, то создаётся положительный Integer с абсолютным значением = value
         if isinstance(value, Natural):
             self.number = value
             self.sign = 1
             return
+        # Если абсолютное значение = 0, то создаётся Integer = 0
         if value[0] == '0' or (len(value) >= 2 and value[0] == '-' and value[1] == '0'):
             self.number = Natural('0')
             self.sign = 0
+        # Если значение отрицательное, то создаётся отрицательный Integer с абсолютным значением = value
         elif value[0] == '-':
             self.number = Natural(value[1:])
             self.sign = -1
+        # В остальныйх случаях создаётся положительный Integer с абсолютным значением = value
         else:
             self.number = Natural(value)
             self.sign = 1
@@ -40,6 +44,7 @@ class Integer:
 
     def __str__(self):
         """ Return str(self). """
+        # Если число негативное, то в начало строкового представления числа дописывается минус
         return ('-' * (self.sign < 0)) + str(self.number)
 
     def __repr__(self):
