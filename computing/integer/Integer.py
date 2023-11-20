@@ -67,9 +67,11 @@ class Integer:
         return not (self < other)
 
     def absolute(self) -> Natural:
+        """ Return self-number. """
         return self.number
 
     def determinate_sign(self) -> Literal[0, 1, 2]:
+        """ Return 2 if number is positive, 1 if number is negative, else 0. """
         if self.sign == 1:
             return 2
         if self.sign == -1:
@@ -78,9 +80,11 @@ class Integer:
 
     @staticmethod
     def from_natural(natural: Natural):
+        """ Return Integer made from Rational. """
         return Integer(natural)
 
     def to_natural(integer: Integer):
+        """ Return Natural made from Integer if Integer is positive. """
         if integer < 0:
             raise ValueError("отрицательное")
         return Natural(integer.number)
