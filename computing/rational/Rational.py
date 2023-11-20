@@ -10,37 +10,35 @@ class Rational:
     numerator: Integer
     denominator: Natural
 
-    class Rational:
+    # Конструктор класса для рациональных чисел
+    def __init__(self, value: str | list[Integer, Natural]) -> None:
 
-        # Конструктор класса для рациональных чисел
-        def __init__(self, value: str | list[Integer, Natural]) -> None:
+        # Проверка, является ли параметр value строкой
+        if isinstance(value, str):
 
-            # Проверка, является ли параметр value строкой
-            if isinstance(value, str):
+            # Разделение строки на числитель и знаменатель по символу '/'
+            value = value.split('/')
 
-                # Разделение строки на числитель и знаменатель по символу '/'
-                value = value.split('/')
+            # Проверка, состоит ли строка только из числителя
+            if len(value) == 1:
 
-                # Проверка, состоит ли строка только из числителя
-                if len(value) == 1:
-
-                    # Если знаменатель не указан, устанавливаем его в 1
-                    self.numerator = Integer(value[0])
-                    self.denominator = Natural('1')
-                else:
-
-                    # Иначе устанавливаем числитель и знаменатель из строки
-                    self.numerator = Integer(value[0])
-                    self.denominator = Natural(value[1])
+                # Если знаменатель не указан, устанавливаем его в 1
+                self.numerator = Integer(value[0])
+                self.denominator = Natural('1')
             else:
 
-                # Если параметр value не является строкой, предполагаем, что это список числителя и знаменателя
-                self.numerator = value[0]
-                self.denominator = value[1]
+                # Иначе устанавливаем числитель и знаменатель из строки
+                self.numerator = Integer(value[0])
+                self.denominator = Natural(value[1])
+        else:
 
-            # Проверка на случай деления на ноль (знаменатель не может быть нулевым)
-            if self.denominator == Natural('0'):
-                raise ZeroDivisionError
+            # Если параметр value не является строкой, предполагаем, что это список числителя и знаменателя
+            self.numerator = value[0]
+            self.denominator = value[1]
+
+        # Проверка на случай деления на ноль (знаменатель не может быть нулевым)
+        if self.denominator == Natural('0'):
+            raise ZeroDivisionError
 
     # Преобразование рационального числа во float
     def __float__(self):
@@ -158,8 +156,3 @@ class Rational:
     def __ge__(self, other: Rational) -> bool:
         return not (self < other)
 
-
-if __name__ == '__main__':
-    s = Rational('7/2')
-    k = Rational('9/3')
-    print(s.devide(k))
