@@ -112,8 +112,12 @@ class Polynom:
         """
         if self.get_degree() <= 1:
             return self.copy()
+        
+        # Нахождение производной многочлена
         f_der = self.derive()
+        # Нахождение НОД многочлена и его производной
         d = self.gcd(f_der)
+        # Выводим результат деления многочлена на d
         return self.divide(d).factor_polynomial_coefficients()
 
     def multiply_by_monomial(self: Polynom, k: int | Natural) -> Polynom:
