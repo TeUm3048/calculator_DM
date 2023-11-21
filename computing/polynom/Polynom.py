@@ -100,10 +100,24 @@ class Polynom:
          f(x) = (x-1) * (x-2)^2 * (x-3)^3,
          Then result equals (x-1) * (x-2) * (x-3)
         """
+        """
+        Пусть F – поле, а p – неприводимый множитель
+        кратности k многочлена f ∈ F[x]. 
+        
+        Если k = 1, то p не делит f'. 
+        
+        Если k > 1,
+        то p является неприводимым множителем многочлена f' кратности k − 1. 
+        Тогда f/НОД(f, f') имеет те же корни, что и f, но не имеет кратных корней.
+        """
         if self.get_degree() <= 1:
             return self.copy()
+        
+        # Нахождение производной многочлена
         f_der = self.derive()
+        # Нахождение НОД многочлена и его производной
         d = self.gcd(f_der)
+        # Выводим результат деления многочлена на d
         return self.divide(d).factor_polynomial_coefficients()
 
     def multiply_by_monomial(self: Polynom, k: int | Natural) -> Polynom:
