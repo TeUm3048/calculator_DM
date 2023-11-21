@@ -45,6 +45,19 @@ module.exports = {
         resourceQuery: { not: [/url/] }, // exclude react component if *.svg?url
         use: ["@svgr/webpack"],
       },
+      {
+        test: /\.mdx?$/,
+        use: [
+          { loader: "babel-loader", options: {} },
+          {
+            loader: "@mdx-js/loader",
+            /** @type {import('@mdx-js/loader').Options} */
+            options: {
+              /* jsxImportSource: …, otherOptions… */
+            },
+          },
+        ],
+      },
     ],
   },
   // pass all js files through Babel

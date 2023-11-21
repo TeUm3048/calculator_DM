@@ -12,6 +12,7 @@ import NaturalCalculatePage from "../Pages/NaturalCalculatePage";
 import IntegerCalculatingPage from "../Pages/IntegerCalculatePage";
 import RationalCalculatePage from "../Pages/RationalCalculatePage";
 import PolynomCalculatePage from "../Pages/PolynomCalculatePage";
+import Docs from "../Pages/DocsPage";
 
 export default class Header extends Component {
   render() {
@@ -26,15 +27,10 @@ export default class Header extends Component {
                 <Nav.Link href="/int"> Integer</Nav.Link>
                 <Nav.Link href="/rat"> Rational</Nav.Link>
                 <Nav.Link href="/poly"> Polynom</Nav.Link>
+                <Nav.Link href="/docs"> Docs</Nav.Link>
+
                 {/* <Nav.Link href="/test"> Test</Nav.Link> */}
               </Nav>
-              <Form inline>
-                <div style={{ display: "flex" }}>
-                  <Button className="mr-sm-2" variant="outline-info">
-                    Search
-                  </Button>
-                </div>
-              </Form>
             </Navbar.Collapse>
           </Container>
         </Navbar>
@@ -45,6 +41,7 @@ export default class Header extends Component {
             <Route exact path="/int" element={<IntegerCalculatingPage />} />
             <Route exact path="/rat" element={<RationalCalculatePage />} />
             <Route exact path="/poly" element={<PolynomCalculatePage />} />
+            <Route exact path="/docs" element={<Docs />} />
             {/* <Route exact path="/test" element={<NaturalCalculatePage />} /> */}
           </Routes>
         </Router>
