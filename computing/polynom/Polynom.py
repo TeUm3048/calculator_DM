@@ -83,11 +83,6 @@ class Polynom:
     def copy(self) -> Polynom:
         return Polynom([coefficient.copy() for coefficient in self.data])
 
-    def multiply(self, other: Polynom):
-        ### ЗАГЛУШКА ###
-        warnings.warn('Вместо multiply используется заглушка')
-        return Polynom.from_numpy(self.to_numpy() * other.to_numpy())
-
     def divide(self, other: Polynom) -> Polynom:
         from .divide import divide
         return divide(self, other)
