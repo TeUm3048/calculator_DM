@@ -16,6 +16,7 @@ const CalculatorModule = <Num extends { num: any }, Op>({
 }: Props<Num, Op>) => {
   const [num1, setNum1] = useState<string>();
   const [num2, setNum2] = useState<string>();
+  const [errorMessage, setErrorMessage] = useState<string>();
   // const [num3, setNum3] = useState<string>();
   const [operator, setOperator] = useState<Op>();
   const refInput1 = useRef<HTMLInputElement>(null);
@@ -24,10 +25,14 @@ const CalculatorModule = <Num extends { num: any }, Op>({
 
   const handleSubmit: FormEventHandler = async (e) => {
     e.preventDefault();
+    setErrorMessage("");
+
     if (!refInput1 || !refInput1.current) {
+      setErrorMessage("Input1 is not valid");
       throw new TypeError("Input1 is not valid");
     }
     if (!refInput2 || !refInput2.current) {
+      setErrorMessage("Input2 is not valid");
       throw new TypeError("Input2 is not valid");
     }
     // if (!refInput3 || !refInput3.current) {
@@ -39,6 +44,7 @@ const CalculatorModule = <Num extends { num: any }, Op>({
     // setNum3(refInput3.current.value);
 
     if (!operator) {
+      setErrorMessage("Не выбран оператор");
       return;
     }
 
@@ -47,14 +53,17 @@ const CalculatorModule = <Num extends { num: any }, Op>({
     if (num2) operator_args.push(num2);
     // if (num3) operator_args.push(num3);
 
-    calculateOperator(operator, operator_args.map(parseStringToNum)).then(
-      (value) => {
+    calculateOperator(operator, operator_args.map(parseStringToNum))
+      .then((value) => {
         setNum1(value.num);
         setNum2("");
         // setNum3("");
         setOperator(undefined);
-      }
-    );
+      })
+      .catch((error) => {
+        setErrorMessage("Упс, что-то пошло не так...");
+        throw error;
+      });
   };
 
   return (
@@ -73,6 +82,8 @@ const CalculatorModule = <Num extends { num: any }, Op>({
         value={num2}
         onChange={(e) => setNum2(e.currentTarget.value)}
       />
+      <div className={styles.error}>{errorMessage}</div>
+
       {/* <input
         className={styles.input}
         type="text"

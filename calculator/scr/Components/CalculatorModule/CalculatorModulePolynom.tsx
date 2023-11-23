@@ -10,13 +10,17 @@ interface Props<Num, Op> {
   parseStringToNum: (s: string) => Num;
 }
 
-const CalculatorModulePolynom = <Num extends PolynomNumber, Op extends PolynomOperator>({
+const CalculatorModulePolynom = <
+  Num extends PolynomNumber,
+  Op extends PolynomOperator
+>({
   calculateOperator,
   calculate_operators,
   parseStringToNum,
 }: Props<Num, Op>) => {
   const [num1, setNum1] = useState<string>();
   const [num2, setNum2] = useState<string>();
+  const [errorMessage, setErrorMessage] = useState<string>();
   // const [num3, setNum3] = useState<string>();
   const [operator, setOperator] = useState<Op>();
   const refInput1 = useRef<HTMLInputElement>(null);
@@ -25,10 +29,14 @@ const CalculatorModulePolynom = <Num extends PolynomNumber, Op extends PolynomOp
 
   const handleSubmit: FormEventHandler = async (e) => {
     e.preventDefault();
+    setErrorMessage("");
+
     if (!refInput1 || !refInput1.current) {
+      setErrorMessage("Input1 is not valid");
       throw new TypeError("Input1 is not valid");
     }
     if (!refInput2 || !refInput2.current) {
+      setErrorMessage("Input2 is not valid");
       throw new TypeError("Input2 is not valid");
     }
     // if (!refInput3 || !refInput3.current) {
@@ -40,6 +48,7 @@ const CalculatorModulePolynom = <Num extends PolynomNumber, Op extends PolynomOp
     // setNum3(refInput3.current.value);
 
     if (!operator) {
+      setErrorMessage("Не выбран оператор");
       return;
     }
 
@@ -48,14 +57,17 @@ const CalculatorModulePolynom = <Num extends PolynomNumber, Op extends PolynomOp
     if (num2) operator_args.push(num2);
     // if (num3) operator_args.push(num3);
 
-    calculateOperator(operator, operator_args.map(parseStringToNum)).then(
-      (value) => {
+    calculateOperator(operator, operator_args.map(parseStringToNum))
+      .then((value) => {
         setNum1(value.num.join(" "));
         setNum2("");
         // setNum3("");
         setOperator(undefined);
-      }
-    );
+      })
+      .catch((error) => {
+        setErrorMessage("Упс, что-то пошло не так...");
+        throw error;
+      });
   };
 
   return (
@@ -74,13 +86,8 @@ const CalculatorModulePolynom = <Num extends PolynomNumber, Op extends PolynomOp
         value={num2}
         onChange={(e) => setNum2(e.currentTarget.value)}
       />
-      {/* <input
-        className={styles.input}
-        type="text"
-        ref={refInput3}
-        value={num3}
-        onChange={(e) => setNum3(e.currentTarget.value)}
-      /> */}
+      <div className={styles.error}>{errorMessage}</div>
+
       <div className={styles.btn_container}>
         {calculate_operators.map((el) => {
           return (

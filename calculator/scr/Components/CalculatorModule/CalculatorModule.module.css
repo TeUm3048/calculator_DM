@@ -26,3 +26,8 @@
 .btn.active {
   background-color: #cfcfcf;
 }
+.error {
+  color: crimson;
+  font-size: 10px;
+  height: 15px;
+}
