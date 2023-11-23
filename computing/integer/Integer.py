@@ -17,18 +17,16 @@ class Integer:
             self.number = value
             self.sign = 1
             return
-        # Если абсолютное значение = 0, то создаётся Integer = 0
-        if value[0] == '0' or (len(value) >= 2 and value[0] == '-' and value[1] == '0'):
-            self.number = Natural('0')
-            self.sign = 0
         # Если значение отрицательное, то создаётся отрицательный Integer с абсолютным значением = value
-        elif value[0] == '-':
+        if value[0] == '-':
             self.number = Natural(value[1:])
             self.sign = -1
         # В остальныйх случаях создаётся положительный Integer с абсолютным значением = value
         else:
             self.number = Natural(value)
             self.sign = 1
+        if self.number == Natural('0'):
+            self.sign = 0
 
     def __len__(self):
         """ Return len of self.number. """
