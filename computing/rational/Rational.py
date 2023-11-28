@@ -89,8 +89,8 @@ class Rational:
 
     # Статический метод для создания рационального числа из целого
     @staticmethod
-    def from_integer(int: Integer):
-        return Rational(int, Natural('1'))
+    def from_integer(integer: Integer):
+        return Rational(integer, Natural('1'))
 
     # Статический метод для создания целого числа из рационального
     @staticmethod
